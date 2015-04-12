@@ -55,6 +55,11 @@ angular.module('circuit', ['ionic', 'circuit.controllers', 'circuit.services'])
 
   .state('tab.info', {
     url: '/exercinfo',
+    resolve: {
+      exerc: function(ExerciseGen){
+        return ExerciseGen.getExerc('10AbbWorkout');
+      }
+    },
     views: {
       'tab-info': {
         templateUrl: 'templates/exercinfo.html',

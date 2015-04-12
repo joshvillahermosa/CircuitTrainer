@@ -5,9 +5,27 @@
       <!-- 
         Will be modular with `{{exerc.title}}`
       -->
-      <div class="item item-divider">OVERALL TITLE</div>
+      <div class="item item-divider"><h2>{{exerc.name}}</h2></div>
       <div class="item item-body">
-        Cred Pitchfork kitsch, jean shorts DIY deep v butcher Portland actually. Vinyl cardigan cliche twee farm-to-table, American Apparel meditation Pitchfork hoodie actually small batch. Skateboard wolf Carles viral lomo messenger bag food truck gastropub health goth cold-pressed. Pinterest chillwave blog American Apparel, Truffaut heirloom banjo. Hella cray artisan gastropub vegan, DIY chia master cleanse. Small batch YOLO retro Carles skateboard.
+        <span class="row author">by {{exerc.author}}</span>
+        <hr>
+        <div class="row">
+          {{exerc.desc}}
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col col-50">{{exerc.exercise.length}} total workouts</div>
+          <div class="col col-50">Total time (m/s): {{totalTime() | date:'m:s'}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="list card" ng-repeat="ex in exerc.exercise">
+      <div class="item item-divider">{{ex.exercName}}</div>
+      <div class="item item-body">
+        <div class="row">{{ex.exercDesc}}</div>
+        <div class="row">Reference Link: {{ex.exercRefLink}}</div>
+      </div>
       </div>
     </div>
 
