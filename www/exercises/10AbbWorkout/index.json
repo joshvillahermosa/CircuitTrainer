@@ -1,0 +1,133 @@
+{
+    "name": "10 Minute Abb Workout",
+    "id": "",
+    "author": "Joshua John Villahermosa",
+    "created": "April 1st, 2015",
+    "updated": "April 2nd, 2015",
+    "desc": "A 10 minute intesive abb Workout. This will test your core and improve your abs",
+    "tags": [
+      "Abdominals",
+      "Obliques"
+    ],
+    "exercise": [
+
+        {
+        "exercName": "Situps",
+        "exercDesc": "",
+        "exercTime": 40000,
+        "exercRefLink": "http://google.com",
+        "exercImg": [
+            {
+                "exercImgName": "",
+                "exercImgRef": ""
+            }
+        ]
+        },
+
+        {
+        "exercName": "Flat Leg Situps",
+        "exercDesc": "",
+        "exercTime": 40000,
+        "exercRefLink": "http://google.com",
+        "exercImg": [
+            {
+                "exercImgName": "",
+                "exercImgRef": ""
+            }
+        ]
+        },
+
+        {
+        "exercName": "Leg Raises",
+        "exercDesc": "",
+        "exercTime": 40000,
+        "exercRefLink": "http://google.com",
+        "exercImg": [
+            {
+                "exercImgName": "",
+                "exercImgRef": ""
+            }
+        ]
+        },
+
+        {
+        "exercName": "Circular Ab Rotation",
+        "exercDesc": "",
+        "exercTime": 40000,
+        "exercRefLink": "http://google.com",
+        "exercImg": [
+            {
+                "exercImgName": "",
+                "exercImgRef": ""
+            }
+        ]
+        },
+
+        {
+        "exercName": " (Switch) Circular Ab Rotation",
+        "exercDesc": "",
+        "exercTime": 40000,
+        "exercRefLink": "http://google.com",
+        "exercImg": [
+            {
+                "exercImgName": "",
+                "exercImgRef": ""
+            }
+        ]
+        },
+
+        {
+        "exercName": "Heel Tocuhes",
+        "exercDesc": "",
+        "exercTime": 40000,
+        "exercRefLink": "http://google.com",
+        "exercImg": [
+            {
+                "exercImgName": "",
+                "exercImgRef": ""
+            }
+        ]
+        },
+
+        {
+        "exercName": "Circular Ab Rotation",
+        "exercDesc": "",
+        "exercTime": 40000,
+        "exercRefLink": "http://google.com",
+        "exercImg": [
+            {
+                "exercImgName": "",
+                "exercImgRef": ""
+            }
+        ]
+        },
+
+        {
+        "exercName": "Crunches",
+        "exercDesc": "",
+        "exercTime": 40000,
+        "exercRefLink": "http://google.com",
+        "exercImg": [
+            {
+                "exercImgName": "",
+                "exercImgRef": ""
+            }
+        ]
+        },
+
+        {
+        "exercName": "FlatLeg Crunches",
+        "exercDesc": "",
+        "exercTime": 400,
+        "exercRefLink": "http://google.com",
+        "exercImg": [
+            {
+                "exercImgName": "",
+                "exercImgRef": ""
+            }
+        ]
+        }
+
+    ],
+    "exerciseTimeInterval": 2000
+}

@@ -53,7 +53,7 @@ angular.module('circuit', ['ionic', 'circuit.controllers'])
     views: {
       'tab-info': {
         templateUrl: 'templates/exercinfo.html',
-        controller: 'DashCtrl'
+        controller: 'ExercCtrl'
       }
     }
   })
