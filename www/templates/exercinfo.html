@@ -15,7 +15,7 @@
         <hr>
         <div class="row">
           <div class="col col-50">{{exerc.exercise.length}} total workouts</div>
-          <div class="col col-50">Total time (m/s): {{totalTime() | date:'m:s'}}</div>
+          <div class="col col-50">Total time (m/s): {{totalTime() | date:'m:ss'}}</div>
         </div>
       </div>
     </div>
@@ -24,7 +24,22 @@
       <div class="item item-divider">{{ex.exercName}}</div>
       <div class="item item-body">
         <div class="row">{{ex.exercDesc}}</div>
-        <div class="row">Reference Link: {{ex.exercRefLink}}</div>
+        <hr>
+        <div class="row">Reference Link:</div>
+        <a href="{{ex.exercRefLink}}" class="row">{{ex.exercRefLink}}</a>
+        <hr>
+        <div class="row">
+          <div class="col col-50">
+            Time: {{ex.exercTime | date:'m:ss'}}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div ng-repeat="img in ex.exercImg">
+            
+          </div>
+          <img src="{{img.exercImgRef}}" alt="{{img.exercImgRefName}}">
+        </div>
       </div>
       </div>
     </div>

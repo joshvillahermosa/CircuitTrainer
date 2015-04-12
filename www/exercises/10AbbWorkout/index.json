@@ -13,22 +13,22 @@
 
         {
         "exercName": "Situps",
-        "exercDesc": "",
+        "exercDesc": "The sit-up is an abdominal strength training exercise commonly performed to strengthen the abdominal muscles. It is similar to a crunch (crunches target the rectus abdominus and also work the external and internal obliques), but sit-ups have a fuller range of motion and condition additional muscles. Sit-ups target the hip flexors, rectus abdominus and also work the iliopsoas, tensor fasciae latae, rectus femoris, sartorius, and, to a very small degree, the obliques.",
         "exercTime": 40000,
-        "exercRefLink": "http://google.com",
+        "exercRefLink": "http://en.wikipedia.org/wiki/Sit-up",
         "exercImg": [
             {
                 "exercImgName": "",
-                "exercImgRef": ""
+                "exercImgRef": "http://upload.wikimedia.org/wikipedia/commons/8/87/Crunches.jpg"
             }
         ]
         },
 
         {
         "exercName": "Flat Leg Situps",
-        "exercDesc": "",
+        "exercDesc": "The key to a flat, toned stomach is to perform a variety of abdominal exercises. Straight-leg situps work different muscles in your midsection and can tone your lower and upper abs, sides and lower back. Different variations of the straight-leg situp can also work portions of your legs and backside.",
         "exercTime": 40000,
-        "exercRefLink": "http://google.com",
+        "exercRefLink": "http://www.livestrong.com/article/475783-straight-leg-situps/",
         "exercImg": [
             {
                 "exercImgName": "",
@@ -39,87 +39,9 @@
 
         {
         "exercName": "Leg Raises",
-        "exercDesc": "",
+        "exercDesc": "The leg raise is the perfect exercise for the somewhat neglected lower abdominals and hip flexors. Regular performance of leg raises can help to strengthen the lower back and therefore reduce the risk of injuries. You will need a mat to lie on for this exercise and some people who experience lower back pain may want to pop a towel under their lower back area.",
         "exercTime": 40000,
-        "exercRefLink": "http://google.com",
-        "exercImg": [
-            {
-                "exercImgName": "",
-                "exercImgRef": ""
-            }
-        ]
-        },
-
-        {
-        "exercName": "Circular Ab Rotation",
-        "exercDesc": "",
-        "exercTime": 40000,
-        "exercRefLink": "http://google.com",
-        "exercImg": [
-            {
-                "exercImgName": "",
-                "exercImgRef": ""
-            }
-        ]
-        },
-
-        {
-        "exercName": " (Switch) Circular Ab Rotation",
-        "exercDesc": "",
-        "exercTime": 40000,
-        "exercRefLink": "http://google.com",
-        "exercImg": [
-            {
-                "exercImgName": "",
-                "exercImgRef": ""
-            }
-        ]
-        },
-
-        {
-        "exercName": "Heel Tocuhes",
-        "exercDesc": "",
-        "exercTime": 40000,
-        "exercRefLink": "http://google.com",
-        "exercImg": [
-            {
-                "exercImgName": "",
-                "exercImgRef": ""
-            }
-        ]
-        },
-
-        {
-        "exercName": "Circular Ab Rotation",
-        "exercDesc": "",
-        "exercTime": 40000,
-        "exercRefLink": "http://google.com",
-        "exercImg": [
-            {
-                "exercImgName": "",
-                "exercImgRef": ""
-            }
-        ]
-        },
-
-        {
-        "exercName": "Crunches",
-        "exercDesc": "",
-        "exercTime": 40000,
-        "exercRefLink": "http://google.com",
-        "exercImg": [
-            {
-                "exercImgName": "",
-                "exercImgRef": ""
-            }
-        ]
-        },
-
-        {
-        "exercName": "FlatLeg Crunches",
-        "exercDesc": "",
-        "exercTime": 400,
-        "exercRefLink": "http://google.com",
+        "exercRefLink": "http://30dayfitnesschallenges.com/how-to-do-leg-raises/",
         "exercImg": [
             {
                 "exercImgName": "",
