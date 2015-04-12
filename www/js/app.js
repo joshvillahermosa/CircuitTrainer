@@ -40,11 +40,16 @@ angular.module('circuit', ['ionic', 'circuit.controllers', 'circuit.services'])
 
   .state('tab.dash', {
     url: '/dash',
+    resolve: {
+      exerc: function(ExerciseGen){
+        return ExerciseGen.getExerc('10AbbWorkout');
+      }
+    },
     views: {
       'tab-dash': {
         templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
-      }
+        controller: 'DashCtrl',
+      },
     }
   })
 
@@ -53,7 +58,7 @@ angular.module('circuit', ['ionic', 'circuit.controllers', 'circuit.services'])
     views: {
       'tab-info': {
         templateUrl: 'templates/exercinfo.html',
-        controller: 'ExercCtrl'
+        controller: 'ExercCtrl',
       }
     }
   })
