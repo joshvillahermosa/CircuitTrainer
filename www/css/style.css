@@ -1,1 +1,7 @@
 /* Empty. Add your own CSS if you like */
+
+/*Center Helper*/
+.center {
+  margin: 0 0 auto;
+  margin-top: 10px; 
+}
