@@ -1,11 +1,11 @@
 angular.module('circuit.services', [])
 
-.factory('ExerciseGen', function() {
-
+.factory('ExerciseGen', function($http) {
   return {
-    get: function(exercize) {
-      
-      return null;
+    getExerc: function(exercise) {
+      return $http.get('exercises/'+exercise+'/index.json').success(function(res){
+        return res.data;
+      });
     }
   };
 });
