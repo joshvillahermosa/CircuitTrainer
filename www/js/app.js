@@ -30,15 +30,15 @@ angular.module('circuit', ['ionic', 'circuit.controllers', 'circuit.services', '
   $stateProvider
 
   // setup an abstract state for the tabs directive
-    .state('tab', {
-    url: "/tab",
+    .state('app', {
+    url: "/app",
     abstract: true,
     templateUrl: "templates/tabs.html"
   })
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
+  .state('app.dash', {
     url: '/dash',
     resolve: {
       exerc: function(ExerciseGen){
@@ -46,14 +46,14 @@ angular.module('circuit', ['ionic', 'circuit.controllers', 'circuit.services', '
       }
     },
     views: {
-      'tab-dash': {
+      'app-dash': {
         templateUrl: 'templates/tab-dash.html',
         controller: 'DashCtrl',
       },
     }
   })
 
-  .state('tab.info', {
+  .state('app.info', {
     url: '/exercinfo',
     resolve: {
       exerc: function(ExerciseGen){
@@ -61,14 +61,14 @@ angular.module('circuit', ['ionic', 'circuit.controllers', 'circuit.services', '
       }
     },
     views: {
-      'tab-info': {
+      'app-info': {
         templateUrl: 'templates/exercinfo.html',
         controller: 'ExercCtrl',
       }
     }
   })
 
-  .state('tab.circuit', {
+  .state('app.circuit', {
     url: '/circuit',
     resolve: {
       exerc: function(ExerciseGen){
@@ -76,7 +76,7 @@ angular.module('circuit', ['ionic', 'circuit.controllers', 'circuit.services', '
       }
     },
     views: {
-      'tab-info': {
+      'app-info': {
         templateUrl: 'templates/circuit.html',
         controller: 'CircuitCtrl',
       }
@@ -84,6 +84,6 @@ angular.module('circuit', ['ionic', 'circuit.controllers', 'circuit.services', '
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/app/dash');
 
 });
