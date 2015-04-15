@@ -18,4 +18,9 @@ angular.module('circuit.controllers', ['circuit.services'])
     }
     return totalTime;
   }
+})
+
+.controller('CircuitCtrl', function($scope, $log, $interval, exerc){
+   $log.log(exerc.data);
+   $scope.exc = exerc.data;
 });

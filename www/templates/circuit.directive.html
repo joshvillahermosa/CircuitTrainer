@@ -1,11 +1,11 @@
 <div class="list card">
     <div class="item item-body center">
-        <h2>CircuitName</h2>
+        <h2>{{exc.name}}</h2>
         <div class="exerc-img">
             <img src="/exercises/10AbbWorkout/imgs/sit-up-0.JPG">
         </div>
-        <div class="row time">
-            0.59
+        <div class="row time center">
+            {{totalTime | date:'m:ss'}}
         </div>
     </div>
 </div>
