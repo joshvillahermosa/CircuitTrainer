@@ -2,7 +2,8 @@
 
 /*Center Helper*/
 .center {
-  margin: 0 0 auto; 
+  text-align: center;
+  margin: 0px 0px auto; 
 }
 .link {
   display: block;

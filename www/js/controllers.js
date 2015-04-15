@@ -35,9 +35,11 @@ angular.module('circuit.controllers', ['circuit.services'])
    }*/
 
    function count (){
+    $log.log(n);
+
+    $scope.exc = exer.exercise[n];
     n++;
-    console.log(n);
    }
 
-   $interval(count, 1000);
+   $interval(count, 3000);
 });
