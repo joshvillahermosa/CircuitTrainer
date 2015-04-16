@@ -11,28 +11,40 @@ angular.module('circuit.directives', [])
     link: function(scope) {
       var totalTime = 0; 
       var exc = scope.exercise;
+      var totalExc = exc.exercise.length;
+      var excCount = 0; 
 
-      for(var time = 0; time < exc.exercise.length; time++){
+      for(var time = 0; time < totalExc; time++){
         totalTime += exc.exercise[time].exercTime;
       }
 
+      var spareTime = totalTime - exc.exercise[totalExc - 1].exercTime;
+
       scope.totalTime = totalTime;
 
-      for (var i = 0; i <= 3; i++) {
-        var counter = $interval(function(){
-          scope.totalTime = totalTime;
-          console.log(totalTime);
-          totalTime -= 1000;
+      var counter = $interval(function(){
 
-          //Stopes
-          if (totalTime < 0) {
-            $interval.cancel(counter);
-          } 
+        scope.totalTime = totalTime;
+        scope.exc = scope.exercise.exercise[excCount];
+        $log.log(totalTime);
+        $log.log(scope.exercise.exercise[excCount]);
+        $log.log('SpareTime: '+ spareTime);
+        $log.log('excCount = '+excCount);
+        totalTime -= 1000;
 
-        }, 1000);
 
-        console.log('Round complete');
-      }
+        //Creates the correct countdown
+        if(spareTime == totalTime){
+          excCount++;
+          spareTime = spareTime - scope.exercise.exercise[excCount].exercTime;
+        }
+
+        //Stops
+        if (totalTime < 0) {
+          $interval.cancel(counter);
+        } 
+
+      }, 1000);
     }
   };
 }]);
