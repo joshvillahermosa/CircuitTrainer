@@ -24,14 +24,20 @@ angular.module('circuit.directives', [])
 
       var counter = $interval(function(){
 
+        //To show total time left of the work out
         scope.totalTime = totalTime;
+
+        //Puts the current object in scope
         scope.exc = scope.exercise.exercise[excCount];
+
+        //Special Loggers
         $log.log(totalTime);
         $log.log(scope.exercise.exercise[excCount]);
         $log.log('SpareTime: '+ spareTime);
         $log.log('excCount = '+excCount);
-        totalTime -= 1000;
 
+        //Update total time
+        totalTime -= 1000;
 
         //Creates the correct countdown
         if(spareTime == totalTime){
