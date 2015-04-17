@@ -9,40 +9,47 @@ angular.module('circuit.directives', [])
     replace: 'true',
     templateUrl: '/templates/circuit.directive.html',
     link: function(scope) {
-      var totalTime = 0; 
-      var exc = scope.exercise;
-      var totalExc = exc.exercise.length;
-      var excCount = 0; 
+      //Total time of the whole work out
+      var totalTime = 0;
+      
+      //Get total Exe count
+      var totalExe = scope.exercise.exercise.length;
 
-      for(var time = 0; time < totalExc; time++){
-        totalTime += exc.exercise[time].exercTime;
+      //Captures total time
+      for(var time = 0; time < totalExe; time++){
+        totalTime += scope.exercise.exercise[time].exercTime;
       }
 
-      var spareTime = totalTime - exc.exercise[totalExc - 1].exercTime;
+      //SwitchIndex for the code below
+      var switchIndex = 1;
+      $log.log('Array index: '+ (totalExe - switchIndex));
 
+      //Time to switch
+      var switchTime = totalTime - scope.exercise.exercise[totalExe - switchIndex].exercTime;
+
+      //Display time
       scope.totalTime = totalTime;
 
+      //Set up exercise index
+      var exeIndex = 0;
+
       var counter = $interval(function(){
+        $log.log('Time to Switch: '+switchTime);
 
         //To show total time left of the work out
         scope.totalTime = totalTime;
 
-        //Puts the current object in scope
-        scope.exc = scope.exercise.exercise[excCount];
-
-        //Special Loggers
-        $log.log(totalTime);
-        $log.log(scope.exercise.exercise[excCount]);
-        $log.log('SpareTime: '+ spareTime);
-        $log.log('excCount = '+excCount);
+        //Set up curent scope for exercise
+        scope.curExe = scope.exercise.exercise[exeIndex]; 
 
         //Update total time
         totalTime -= 1000;
 
-        //Creates the correct countdown
-        if(spareTime == totalTime){
-          excCount++;
-          spareTime = spareTime - scope.exercise.exercise[excCount].exercTime;
+        if(switchTime == totalTime){
+          exeIndex++;
+          switchIndex++
+          var switchTime = totalTime - scope.exercise.exercise[totalExe - switchIndex].exercTime;
+          $log.log('Next exe: '+ scope.exercise.exercise[exeIndex].exercName);
         }
 
         //Stops
