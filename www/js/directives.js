@@ -9,6 +9,11 @@ angular.module('circuit.directives', [])
     replace: 'true',
     templateUrl: '/templates/circuit.directive.html',
     link: function(scope) {
+      //Completion Message
+      var completion = {
+        header: 'Complete'
+      };
+
       //Total time of the whole work out
       var totalTime = 0;
       
@@ -64,6 +69,8 @@ angular.module('circuit.directives', [])
 
         //Stops
         if (totalTime < 0) {
+          $log.info('Fin');
+          scope.complete = completion;
           $interval.cancel(counter);
         } 
 

@@ -1,8 +1,12 @@
 <div class="list card">
     <div class="item item-body center">
         <h2 id="excname">{{curExe.exercName}}</h2>
+        <h2 id="excname">{{complete.header}}</h2>
         <div class="exerc-img">
             <img src="/exercises/10AbbWorkout/imgs/sit-up-0.JPG">
+        </div>
+        <div>
+          {{curExe.exercDesc}}
         </div>
         <div class="row time center">
             {{totalTime | date:'m:ss'}}
