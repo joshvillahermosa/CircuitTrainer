@@ -20,21 +20,26 @@ angular.module('circuit.directives', [])
         totalTime += scope.exercise.exercise[time].exercTime;
       }
 
+      $log.log('Total time: '+ totalTime);
+
       //SwitchIndex for the code below
       var switchIndex = 1;
       $log.log('Array index: '+ (totalExe - switchIndex));
+      $log.log('Time of that exercise: '+ (scope.exercise.exercise[totalExe - switchIndex].exercTime));
 
       //Time to switch
       var switchTime = totalTime - scope.exercise.exercise[totalExe - switchIndex].exercTime;
+      $log.log('Time to Switch for the first time: '+switchTime);
 
       //Display time
       scope.totalTime = totalTime;
 
-      //Set up exercise index
+      //Set up exercise index to move from one workout to another
       var exeIndex = 0;
 
       var counter = $interval(function(){
-        $log.log('Time to Switch: '+switchTime);
+        $log.log('Time to Switch in loop: '+switchTime);
+        $log.log('Total Exer: '+totalExe);
 
         //To show total time left of the work out
         scope.totalTime = totalTime;
@@ -46,9 +51,14 @@ angular.module('circuit.directives', [])
         totalTime -= 1000;
 
         if(switchTime == totalTime){
+          //Move to the next workout
           exeIndex++;
+
+          //Update to subtract index. This will lead to the next work out time (From last to first)
           switchIndex++
-          var switchTime = totalTime - scope.exercise.exercise[totalExe - switchIndex].exercTime;
+
+          //Update the new switch
+          switchTime = totalTime - scope.exercise.exercise[totalExe - switchIndex].exercTime;
           $log.log('Next exe: '+ scope.exercise.exercise[exeIndex].exercName);
         }
 
