@@ -1,12 +1,24 @@
 <div class="list card">
     <div class="item item-body center">
+      
+      <div class="row">
+        <span class="col col-75">
+        <h1>{{totalTime | date:'m:ss'}}</h1>
+        </span>
+        <span class="col col-25">
+          {{exerciseTime | date:'m:ss'}}
+        </span>
+      </div>
+        
+      <hr>
+
         <h1 id="exeName">{{curExe.exercName}}</h1>
         <h1 id="finishMessage">{{complete.header}}</h1>
         <div class="row time center">
-            <h1>{{totalTime | date:'m:ss'}}</h1>
+            
         </div>
         <div class="row">
-          {{exerciseTime | date:'m:ss'}}
+          
         </div>
         <div class="exerc-img">
             <img src="/exercises/10AbbWorkout/imgs/sit-up-0.JPG">
@@ -14,5 +26,9 @@
         <div>
           {{curExe.exercDesc}}
         </div>
+
+        <!-- Add Pause Button-->
+
+        <!-- Add Reset button-->
     </div>
 </div>
