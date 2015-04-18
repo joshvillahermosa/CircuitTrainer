@@ -12,3 +12,14 @@ img {
   max-width: 100%;
   height: auto; 
 }
+
+/*Color styles*/
+ion-content{
+  background-color: #404040;
+}
+
+.card>.item>.item-body{
+  background-color: #7F7F6E;
+  color: #FFFEDB;
+}
+
