@@ -9,9 +9,16 @@ angular.module('circuit.directives', [])
     replace: 'true',
     templateUrl: '/templates/circuit.directive.html',
     link: function(scope) {
+
+      //To announce workout
+      var announceWorkOut = function(message) {
+        var msg = new SpeechSynthesisUtterance(message);
+        window.speechSynthesis.speak(msg);
+      };
+
       //Completion Message
       var completion = {
-        header: 'Complete'
+        header: 'You Have finished your circuit!'
       };
 
       //Total time of the whole work out
@@ -27,22 +34,25 @@ angular.module('circuit.directives', [])
 
       $log.log('Total time: '+ totalTime);
 
-      //SwitchIndex for the code below
-      var switchIndex = 1;
-      $log.log('Array index: '+ (totalExe - switchIndex));
-      $log.log('Time of that exercise: '+ (scope.exercise.exercise[totalExe - switchIndex].exercTime));
-
-      //Time to switch
-      var switchTime = totalTime - scope.exercise.exercise[totalExe - switchIndex].exercTime;
-      $log.log('Time to Switch for the first time: '+switchTime);
-
       //Display time
       scope.totalTime = totalTime;
 
       //Set up exercise index to move from one workout to another
       var exeIndex = 0;
 
+      //Time to switch
+      var switchTime = totalTime - scope.exercise.exercise[exeIndex].exercTime;
+      $log.log('Time to Switch for the first time: '+switchTime);
+
+      //Announce before interval start workout
+      announceWorkOut('Begin!');
+      announceWorkOut(scope.exercise.exercise[exeIndex].exercName);
+
+      //Exercise Time to update
+      scope.exerciseTime = scope.exercise.exercise[exeIndex].exercTime ;
+
       var counter = $interval(function(){
+
         $log.log('Time to Switch in loop: '+switchTime);
         $log.log('Total Exer: '+totalExe);
 
@@ -54,27 +64,38 @@ angular.module('circuit.directives', [])
 
         //Update total time
         totalTime -= 1000;
+        //Decrease time for update
+        scope.exerciseTime -= 1000;
 
+        //When time matches
         if(switchTime == totalTime){
           //Move to the next workout
           exeIndex++;
 
-          //Update to subtract index. This will lead to the next work out time (From last to first)
-          switchIndex++
+          //Announce workout
+          announceWorkOut(scope.exercise.exercise[exeIndex].exercName);
 
           //Update the new switch
-          switchTime = totalTime - scope.exercise.exercise[totalExe - switchIndex].exercTime;
+          switchTime = totalTime - scope.exercise.exercise[exeIndex].exercTime;
+          scope.exerciseTime = scope.exercise.exercise[exeIndex].exercTime + 1000;
+
+          //Reupdate time with next workout
           $log.log('Next exe: '+ scope.exercise.exercise[exeIndex].exercName);
         }
 
         //Stops
         if (totalTime < 0) {
-          $log.info('Fin');
+
+          //Sets complettion message
           scope.complete = completion;
+
+          //Announce finish
+          announceWorkOut(completion.header);
           $interval.cancel(counter);
         } 
 
       }, 1000);
+
     }
   };
 }]);

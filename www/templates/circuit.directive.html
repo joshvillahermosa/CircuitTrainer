@@ -1,15 +1,18 @@
 <div class="list card">
     <div class="item item-body center">
-        <h2 id="excname">{{curExe.exercName}}</h2>
-        <h2 id="excname">{{complete.header}}</h2>
+        <h1 id="exeName">{{curExe.exercName}}</h1>
+        <h1 id="finishMessage">{{complete.header}}</h1>
+        <div class="row time center">
+            <h1>{{totalTime | date:'m:ss'}}</h1>
+        </div>
+        <div class="row">
+          {{exerciseTime | date:'m:ss'}}
+        </div>
         <div class="exerc-img">
             <img src="/exercises/10AbbWorkout/imgs/sit-up-0.JPG">
         </div>
         <div>
           {{curExe.exercDesc}}
-        </div>
-        <div class="row time center">
-            {{totalTime | date:'m:ss'}}
         </div>
     </div>
 </div>
