@@ -10,6 +10,8 @@ angular.module('circuit.directives', [])
     templateUrl: '/templates/circuit.directive.html',
     link: function(scope) {
 
+      scope.paused = false;
+
       //To announce workout
       var announceWorkOut = function(message) {
         var msg = new SpeechSynthesisUtterance(message);
@@ -51,8 +53,7 @@ angular.module('circuit.directives', [])
       //Exercise Time to update
       scope.exerciseTime = scope.exercise.exercise[exeIndex].exercTime +1000;
 
-      var counter = $interval(function(){
-
+      var timer = function(){
         $log.log('Time to Switch in loop: '+switchTime);
         $log.log('Total Exer: '+totalExe);
 
@@ -91,11 +92,25 @@ angular.module('circuit.directives', [])
 
           //Announce finish
           announceWorkOut(completion.header);
-          $interval.cancel(counter);
+          $interval.cancel(promis);
         } 
+      };
 
-      }, 1000);
+      //var counter = $interval(timer, 1000);
 
+      //Starts timer
+      scope.start = function(){
+        scope.stop;
+        scope.paused = false;
+        promis = $interval(timer, 1000); 
+      };
+
+      scope.stop = function(){
+        scope.paused = true;
+        $interval.cancel(promis);
+      };
+
+      scope.start();
     }
   };
 }]);
