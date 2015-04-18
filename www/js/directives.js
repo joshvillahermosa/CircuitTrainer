@@ -49,7 +49,7 @@ angular.module('circuit.directives', [])
       announceWorkOut(scope.exercise.exercise[exeIndex].exercName);
 
       //Exercise Time to update
-      scope.exerciseTime = scope.exercise.exercise[exeIndex].exercTime ;
+      scope.exerciseTime = scope.exercise.exercise[exeIndex].exercTime +1000;
 
       var counter = $interval(function(){
 
