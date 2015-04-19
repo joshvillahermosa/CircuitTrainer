@@ -13,3 +13,60 @@ img {
   height: auto; 
 }
 
+/*Card display*/
+ion-content{
+  background-color: #161616;
+}
+
+.item-body {
+  background-color: #494949;
+  color: #FFF;
+}
+
+.item-body h1{
+  color: #FFF;
+}
+
+/*Button*/
+.button{
+  margin-top: 5px;
+}
+
+.button-pause {
+  border-color: #E8D101;
+  background-color: transparent;
+  color: #E8D101;
+}
+
+.button-continue {
+  border-color: #05E88F;
+  background-color: transparent;
+  color: #05E88F;
+}
+.button-info {
+  border-color: #4AB2FF;
+  background-color: transparent;
+  color: #4AB2FF;
+}
+
+/*Time information*/
+.time{
+  color: #FFF;
+}
+
+#totalTimer > svg {
+    display: block;
+    width: 100%;
+}
+
+#workoutTimer > svg {
+    display: block;
+    width: 100%;
+}
+
+.progressbar-text {
+  position: absolute;
+  margin: 0px;
+  padding: 0px;
+}
+
