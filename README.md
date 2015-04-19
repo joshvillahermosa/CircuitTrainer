@@ -10,7 +10,7 @@ The purpose of this app is to provide a easy wasy to follow a ciruit workout. Th
 
 * ~~Show Time of total workout~~
 * ~~Show timer of sub total workout~~
-* Add Main circle timer for main time
+* ~~Add Main circle timer for main time~~
 * Add sub circle timer for the second one
 * ~~Add a pause button~~
 * ~~Add a continue button~~
