@@ -6,3 +6,4 @@ platforms/
 plugins/
 CircuitTrainer.sublime-project
 CircuitTrainer.sublime-workspace
+www/lib/*
