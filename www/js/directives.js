@@ -10,8 +10,6 @@ angular.module('circuit.directives', [])
     templateUrl: '/templates/circuit.directive.html',
     link: function(scope) {
 
-      scope.paused = false;
-
       //To announce workout
       var announceWorkOut = function(message) {
         var msg = new SpeechSynthesisUtterance(message);
@@ -38,6 +36,7 @@ angular.module('circuit.directives', [])
 
       //Display time
       scope.totalTime = totalTime;
+      var time = totalTime;
 
       //Set up exercise index to move from one workout to another
       var exeIndex = 0;
@@ -53,6 +52,24 @@ angular.module('circuit.directives', [])
       //Exercise Time to update
       scope.exerciseTime = scope.exercise.exercise[exeIndex].exercTime +1000;
 
+      // Total Time -- Circle bar
+      var mainTotalTimer = new ProgressBar.Circle('#totalTimer', {
+        color: "#59FF12",
+        strokeWidth: 2.1,
+        trailColor: "#FFF",
+        easing: 'easeOut',
+        text:{value: 'Total Workout Time left'}
+      });
+
+      var workoutTimer = new ProgressBar.Circle('#workoutTimer', {
+        color: "#59FF12",
+        strokeWidth: 2.1,
+        trailColor: "#FFF",
+        easing: 'easeOut',
+        text:{value: 'Next'}
+      });
+
+
       var timer = function(){
         $log.log('Time to Switch in loop: '+switchTime);
         $log.log('Total Exer: '+totalExe);
@@ -63,10 +80,17 @@ angular.module('circuit.directives', [])
         //Set up curent scope for exercise
         scope.curExe = scope.exercise.exercise[exeIndex]; 
 
+        //Update circle timer
+        mainTotalTimer.animate(totalTime/time);
+
+        //Update current workout
+        workoutTimer.animate((totalTime - switchTime)/switchTime);
+
         //Update total time
         totalTime -= 1000;
         //Decrease time for update
         scope.exerciseTime -= 1000;
+
 
         //When time matches
         if(switchTime == totalTime){
