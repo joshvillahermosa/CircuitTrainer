@@ -1,6 +1,6 @@
-angular.module('circuit.directives', [])
+angular.module('circuit.directives', ['ionic'])
 
-.directive('circuit', ['$interval', '$log', function($interval, $log){
+.directive('circuit', ['$interval', '$log', function($interval, $log, $ionicPopup){
   return {
     restrict: 'E',
     scope: {
@@ -81,10 +81,25 @@ angular.module('circuit.directives', [])
         scope.curExe = scope.exercise.exercise[exeIndex]; 
 
         //Update circle timer
-        mainTotalTimer.animate(totalTime/time);
+        mainTotalTimer.animate(totalTime/time, function(){
+          mainTotalTimer.setText(scope.curExe.exercName)
+        });
 
         //Update current workout
-        workoutTimer.animate((totalTime - switchTime)/switchTime);
+        workoutTimer.animate(totalTime/switchTime);
+
+        //Set up popup description for the workouts
+        scope.showExerDesc = function(){
+          scope.stop();
+          var popUp = $ionicPopup.alert({
+            title: scope.curExe.exercName,
+            template: scope.curExe.exercName.exercDesc
+          });
+
+          popUp.then(function(){
+            scope.start();
+          })
+        }
 
         //Update total time
         totalTime -= 1000;
@@ -129,6 +144,7 @@ angular.module('circuit.directives', [])
         promis = $interval(timer, 1000); 
       };
 
+      //Stops or pauses
       scope.stop = function(){
         scope.paused = true;
         $interval.cancel(promis);
