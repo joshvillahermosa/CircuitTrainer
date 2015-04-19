@@ -14,6 +14,15 @@ img {
 }
 
 /*Card display*/
+.bar.bar-stable{
+  background-color: #494949;
+  color: #FFF;
+  border-bottom: #59FF12 1px solid;
+}
+.bar.bar-stable .title {
+  color: #FFF; 
+}
+
 ion-content{
   background-color: #161616;
 }
