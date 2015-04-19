@@ -77,5 +77,6 @@ ion-content{
   position: absolute;
   margin: 0px;
   padding: 0px;
+  font-size: 25px !important;
 }
 
