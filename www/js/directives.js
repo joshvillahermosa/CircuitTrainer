@@ -1,6 +1,6 @@
-angular.module('circuit.directives', ['ionic'])
+angular.module('circuit.directives', ['ionic', 'ui.router'])
 
-.directive('circuit', [ '$interval', '$log', '$ionicPopup', function($interval, $log, $ionicPopup){
+.directive('circuit', [ '$interval', '$log', '$ionicPopup', '$state', function($interval, $log, $ionicPopup, $state){
   return {
     restrict: 'E',
     scope: {
@@ -135,7 +135,6 @@ angular.module('circuit.directives', ['ionic'])
           $interval.cancel(promis);
         } 
       };
-
       //var counter = $interval(timer, 1000);
 
       //Starts timer
@@ -150,6 +149,15 @@ angular.module('circuit.directives', ['ionic'])
         scope.paused = true;
         $interval.cancel(promis);
       };
+
+      scope.cancel = function() {
+        scope.stop();
+        promis = null;
+        exeIndex = 0;
+        switchTime = totalTime - scope.exercise.exercise[exeIndex].exercTime;
+        scope.exerciseTime = scope.exercise.exercise[exeIndex].exercTime +1000;
+        $state.go('app.dash');
+      }
 
       scope.start();
     }

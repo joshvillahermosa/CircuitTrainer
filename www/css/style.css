@@ -58,6 +58,14 @@ ion-content{
   color: #4AB2FF;
 }
 
+.button-cancel {
+  border-color: #FF0000;
+  background-color: transparent;
+  color: #FF0000;
+  margin-left: 5px;
+  margin-right: -5px;
+}
+
 /*Time information*/
 .time{
   color: #FFF;
