@@ -1,6 +1,6 @@
 angular.module('circuit.directives', ['ionic'])
 
-.directive('circuit', ['$interval', '$log', function($interval, $log, $ionicPopup){
+.directive('circuit', [ '$interval', '$log', '$ionicPopup', function($interval, $log, $ionicPopup){
   return {
     restrict: 'E',
     scope: {
@@ -93,7 +93,8 @@ angular.module('circuit.directives', ['ionic'])
           scope.stop();
           var popUp = $ionicPopup.alert({
             title: scope.curExe.exercName,
-            template: scope.curExe.exercName.exercDesc
+            template: scope.curExe.exercDesc,
+            subTitle: 'Authors source: '+scope.curExe.exercRefLink
           });
 
           popUp.then(function(){
