@@ -16,6 +16,7 @@ The purpose of this app is to provide a easy wasy to follow a ciruit workout. Th
 * ~~Add a continue button~~
 * Add a reset button when time is over
 * ~~Add pop up for workout description~~
+* Add 10 and 5 second warnings
 
 ## Issues:
 * Scopes does not get destroyed when the render is changed
