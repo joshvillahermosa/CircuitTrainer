@@ -76,7 +76,7 @@ angular.module('circuit', ['ionic', 'circuit.controllers', 'circuit.services', '
       }
     },
     views: {
-      'app-info': {
+      'app-circuit': {
         templateUrl: 'templates/circuit.html',
         controller: 'CircuitCtrl',
       }

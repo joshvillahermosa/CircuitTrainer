@@ -1,4 +1,4 @@
-angular.module('circuit.controllers', ['circuit.services'])
+angular.module('circuit.controllers', ['circuit.services', 'ui.router'])
 
 .controller('DashCtrl', function($scope, $log, exerc) {
   var data = exerc.data;
@@ -20,7 +20,12 @@ angular.module('circuit.controllers', ['circuit.services'])
   }
 })
 
-.controller('CircuitCtrl', function($scope, $log, $interval, exerc){
+.controller('CircuitCtrl', function($scope, $log, $interval, $state, exerc){
    $log.log(exerc.data);
    $scope.exc = exerc.data;
+
+   $scope.cancel = function(){
+    $log.log('Cancelled');
+    $state.go('app.dash');
+   };
 });

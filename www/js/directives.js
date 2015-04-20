@@ -8,7 +8,7 @@ angular.module('circuit.directives', ['ionic', 'ui.router'])
     },
     replace: 'true',
     templateUrl: '/templates/circuit.directive.html',
-    link: function(scope) {
+    link: function(scope, element) {
 
       //To announce workout
       var announceWorkOut = function(message) {
@@ -150,15 +150,25 @@ angular.module('circuit.directives', ['ionic', 'ui.router'])
         $interval.cancel(promis);
       };
 
+      //Cancels overall
       scope.cancel = function() {
-        scope.stop();
-        promis = null;
+        $log.log('Cancelling');
+        
+        
+        //Reset Variables
         exeIndex = 0;
         switchTime = totalTime - scope.exercise.exercise[exeIndex].exercTime;
         scope.exerciseTime = scope.exercise.exercise[exeIndex].exercTime +1000;
-        $state.go('app.dash');
-      }
 
+        //Supposed to change states
+        $state.transitionTo('app.dash');
+        $log.log('Done');
+      };
+
+      element.on('$destroy', function() {
+        scope.stop();
+        $log.log('HIT');
+      });
       scope.start();
     }
   };
