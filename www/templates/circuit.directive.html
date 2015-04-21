@@ -17,20 +17,22 @@
         <h1 id="finishMessage">{{complete.header}}</h1>
 
         <div class="row">
-          <button class="button button-info col col-100" ng-click="showExerDesc()">View Description</button>
+          <button class="button button-info col col-50" ng-click="showExerDesc()">View Description</button>
+          <button ng-show="!paused" class="button button-pause col col-50" ng-click="stop()">
+          Pause <span class="icon ion-android-stopwatch"></span>          
+          </button>
+          <button ng-hide="!paused" class="button button-continue col col-50" ng-click="start()">
+          Continue <span class="icon ion-android-stopwatch"></span>
+          </button>
         </div>
 
         <!-- Pause/Continue Button-->
-        <div class="center row" ng-show="!paused">
-          <button class="button button-pause col col-100" ng-click="stop()">
-          Pause <span class="icon ion-android-stopwatch"></span>
-          </button>
+        <div class="center row" >
+          
         </div>
 
-        <div class="center row" ng-hide="!paused">
-          <button class="button button-continue col col-100" ng-click="start()">
-          Continue <span class="icon ion-android-stopwatch"></span>
-          </button>
+        <div class="center row" >
+          
         </div>
         <!-- END Pause/Continue Button-->
 
