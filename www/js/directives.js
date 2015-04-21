@@ -128,10 +128,10 @@ angular.module('circuit.directives', ['ionic', 'ui.router'])
         if (totalTime < 0) {
 
           //Sets complettion message
-          scope.complete = completion;
 
           //Announce finish
           announceWorkOut(completion.header);
+          mainTotalTimer.setText(completion.header);
           $interval.cancel(promis);
         } 
       };
