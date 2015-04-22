@@ -1,8 +1,39 @@
 <ion-view view-title="GO!">
   <ion-content class="padding">
-    <circuit exercise="exc"></circuit>
-      <div class="row">
-      <button class="button button-cancel col col-100" ng-click="cancel()">Cancel Circuit</button>
+    <div class="list card">
+        <div class="item item-body center">
+            <div class="row">
+                <span class="col col-75">
+                <div id="totalTimer"></div>
+                <h2 class="time">{{totalTime | date:'m:ss'}}</h2>
+                </span>
+                <span class="col col-25">
+                <div id="workoutTimer"></div>
+                <h2 class="time">{{exerciseTime | date:'m:ss'}}</h2>
+                </span>
+            </div>
+            <div class="row">
+                <button class="button button-info col col-50" ng-click="showExerDesc()">View Description</button>
+                <button ng-show="!paused" class="button button-pause col col-50" ng-click="stop()">
+                Pause <span class="icon ion-android-stopwatch"></span>
+                </button>
+                <button ng-hide="!paused" class="button button-continue col col-50" ng-click="start()">
+                Continue <span class="icon ion-android-stopwatch"></span>
+                </button>
+            </div>
+            <!-- Pause/Continue Button-->
+            <div class="center row" >
+
+            </div>
+            <div class="center row" >
+
+            </div>
+            <!-- END Pause/Continue Button-->
+            <!-- Add Reset button-->
+        </div>
+    </div>
+    <div class="row">
+        <button class="button button-cancel col col-100" ng-click="cancel()">Cancel Circuit</button>
     </div>
   </ion-content>
 </ion-view>
