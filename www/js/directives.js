@@ -161,7 +161,6 @@ angular.module('circuit.directives', ['ionic', 'ui.router'])
         scope.exerciseTime = scope.exercise.exercise[exeIndex].exercTime +1000;
 
         //Supposed to change states
-        $state.transitionTo('app.dash');
         $log.log('Done');
       };
 
