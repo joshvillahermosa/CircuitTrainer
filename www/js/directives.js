@@ -9,6 +9,7 @@ angular.module('circuit.directives', ['ionic', 'ui.router'])
     replace: 'true',
     templateUrl: '/templates/circuit.directive.html',
     link: function(scope, element) {
+      var promis;
 
       //To announce workout
       var announceWorkOut = function(message) {
@@ -69,7 +70,7 @@ angular.module('circuit.directives', ['ionic', 'ui.router'])
         text:{value: 'Next'}
       });
 
-
+      //Exectues function
       var timer = function(){
         $log.log('Time to Switch in loop: '+switchTime);
         $log.log('Total Exer: '+totalExe);
@@ -127,19 +128,17 @@ angular.module('circuit.directives', ['ionic', 'ui.router'])
         //Stops
         if (totalTime < 0) {
 
-          //Sets complettion message
-
           //Announce finish
           announceWorkOut(completion.header);
           mainTotalTimer.setText(completion.header);
-          $interval.cancel(promis);
+          scope.stop();
         } 
       };
       //var counter = $interval(timer, 1000);
 
       //Starts timer
       scope.start = function(){
-        scope.stop;
+        scope.stop();
         scope.paused = false;
         promis = $interval(timer, 1000); 
       };
@@ -153,22 +152,26 @@ angular.module('circuit.directives', ['ionic', 'ui.router'])
       //Cancels overall
       scope.cancel = function() {
         $log.log('Cancelling');
-        
+
+        scope.stop();
+        promis = null;
         
         //Reset Variables
-        exeIndex = 0;
-        switchTime = totalTime - scope.exercise.exercise[exeIndex].exercTime;
-        scope.exerciseTime = scope.exercise.exercise[exeIndex].exercTime +1000;
+        //exeIndex = 0;
+        //switchTime = totalTime - scope.exercise.exercise[exeIndex].exercTime;
+        //scope.exerciseTime = scope.exercise.exercise[exeIndex].exercTime +1000;
 
         //Supposed to change states
         $log.log('Done');
+
+        $state.go('app.dash');
       };
 
-      element.on('$destroy', function() {
-        scope.stop();
-        $log.log('HIT');
-      });
       scope.start();
+
+      element.$on('$destroy', function() {
+        $scope.stop();
+      });
     }
   };
 }]);

@@ -24,8 +24,4 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router'])
    $log.log(exerc.data);
    $scope.exc = exerc.data;
 
-   $scope.cancel = function(){
-    $log.log('Cancelled');
-    $state.go('app.dash');
-   };
 });
