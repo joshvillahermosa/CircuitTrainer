@@ -1,32 +1,9 @@
 <div class="list card">
     <div class="item item-body center">
-        <div class="row">
-
-            <span class="col col-75">
-              <div id="totalTimer"></div>
-              <h2 class="time">{{totalTime | date:'m:ss'}}</h2>
-            </span>
-
-            <span class="col col-25">
-              <div id="workoutTimer"></div>
-              <h2 class="time">{{exerciseTime | date:'m:ss'}}</h2>
-            </span>
-        </div>
-
-        <div class="row">
-          <button class="button button-info col col-50" ng-click="showExerDesc()">View Description</button>
-          <button ng-show="!paused" class="button button-pause col col-50" ng-click="stop()">
-          Pause <span class="icon ion-android-stopwatch"></span>          
-          </button>
-          <button ng-hide="!paused" class="button button-continue col col-50" ng-click="start()">
-          Continue <span class="icon ion-android-stopwatch"></span>
-          </button>
-        </div>
-  
-        <div class="row">
-          <button class="button button-cancel col col-100" ng-click="cancel()">Cancel Circuit</button>
-        </div>
-
-        <!-- Add Reset button-->
+        {{time}}
     </div>
+
+    <div class="button buttom-continue row" ng-click="start()">start/restart</div>
+    <div class="button buttom-cancel row" ng-click="stop()">stop</div>
+    <div class="button buttom-cancel row" ng-click="continue()">continue</div>
 </div>
