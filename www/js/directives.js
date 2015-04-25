@@ -187,10 +187,14 @@ angular.module('circuit.directives', ['ionic', 'ui.router']).directive('circuit'
                 scope.stop = function() {
                   promise = $interval.cancel(promise);
                 };
+
                 scope.continue = function() {
-                  promise = $interval(timer, 1000);
+                  
                 }
-                scope.kill = function() {}
+                scope.kill = function() {
+                  scope.stop();
+                  $state.go('app.dash');
+                };
             }
         };
     }
