@@ -20,16 +20,27 @@ angular.module('circuit.directives', ['ionic', 'ui.router'])
         //Cancel timer running
         $interval.cancel(promise);
         scope.time = 0;
+        var count  = function(){
+          scope.time++
+        }
         promise = $interval(count, 1000);          
       };
 
       scope.continue = function(){
         promise = $interval(count, 1000);
-      }
+      };
 
       scope.stop = function(){
         $interval.cancel(promise);
-      }
+      };
+
+      scope.kill = function(){
+        scope.stop();
+        scope.time = 0;
+        $state.go('app.dash')
+      };
+
+      scope.start();
 
       element.on('$destroy', function(){
         $log.log('hit');
