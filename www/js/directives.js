@@ -51,6 +51,22 @@ angular.module('circuit.directives', ['ionic', 'ui.router']).directive('circuit'
                 /------------------------------------------------*/
                 var promise;
 
+                var mainTotalTimer = new ProgressBar.Circle('#totalTimer', {
+                  color: "#59FF12",
+                  strokeWidth: 2.1,
+                  trailColor: "#FFF",
+                  easing: 'easeOut',
+                  text:{value: 'Total Workout Time left'}
+                });
+
+                var workoutTimer = new ProgressBar.Circle('#workoutTimer', {
+                  color: "#59FF12",
+                  strokeWidth: 2.1,
+                  trailColor: "#FFF",
+                  easing: 'easeOut',
+                  text:{value: 'Next'}
+                });
+
                 $log.log(scope.exc.exercise);
 
                 var getTotalTime = function(exercise) {
@@ -76,6 +92,11 @@ angular.module('circuit.directives', ['ionic', 'ui.router']).directive('circuit'
                 };
 
                 scope.start = function() {
+
+                    var completion = {
+                      header: 'You Have finished your circuit!'
+                    };
+
                     var timer = function() { /*totalTime, exeIndex, switchTime, exercise, totalExe*/
                       $log.log('Time to Switch in loop: ' + switchTime);
                       $log.log('Total Exer: ' + totalExe);
@@ -84,11 +105,15 @@ angular.module('circuit.directives', ['ionic', 'ui.router']).directive('circuit'
                       //Set up curent scope for exercise
                       scope.curExe = exercise.exercise[exeIndex];
                       //Update circle timer
-                      /*mainTotalTimer.animate(totalTime / time, function() {
-                          mainTotalTimer.setText(scope.curExe.exercName)
-                      });*/
+                      mainTotalTimer.animate(totalTime / time, function() {
+                        if(totalTime == 0) {
+                          mainTotalTimer.setText('Circuit complete');
+                        } else {
+                          mainTotalTimer.setText(scope.curExe.exercName);
+                        }
+                      });
                       //Update current workout
-                      //workoutTimer.animate(totalTime / switchTime);
+                      workoutTimer.animate(totalTime / switchTime);
                       //Set up popup description for the workouts
                       scope.showExerDesc = function() {
                           scope.stop();
@@ -98,7 +123,7 @@ angular.module('circuit.directives', ['ionic', 'ui.router']).directive('circuit'
                               subTitle: 'Authors source: ' + scope.curExe.exercRefLink
                           });
                           popUp.then(function() {
-                              scope.start();
+                              scope.continue();
                           })
                       }
                       //Update total time
@@ -120,20 +145,30 @@ angular.module('circuit.directives', ['ionic', 'ui.router']).directive('circuit'
                       //Stops
                       if (totalTime < 0) {
                           //Announce finish
-                          //announceWorkOut(completion.header);
-                          //mainTotalTimer.setText(completion.header);
+                          announceWorkOut(completion.header);
+                          mainTotalTimer.setText(completion.header);
                           scope.stop();
                       }
                   };
 
                   scope.stop = function() {
+                    scope.paused = true;
                     promise = $interval.cancel(promise);
                   };
 
                   scope.continue = function() {
+                    scope.paused = false;
                     promise = $interval(timer, 1000);
                   };
                   scope.kill = function() {
+
+                    var exercise = scope.exc;
+                    var totalTime = getTotalTime(scope.exc);
+                    var exeIndex = 0; //Sets the index what will increment to switch workouts
+                    var switchTime = getFirstSwitchTime(totalTime, scope.exc, exeIndex);
+                    var totalExe = scope.exc.exercise.length;
+                    var time = totalTime;
+                    scope.paused = true;
                     scope.stop();
                     $state.go('app.dash');
                   };
@@ -145,12 +180,17 @@ angular.module('circuit.directives', ['ionic', 'ui.router']).directive('circuit'
                   var exeIndex = 0; //Sets the index what will increment to switch workouts
                   var switchTime = getFirstSwitchTime(totalTime, scope.exc, exeIndex);
                   var totalExe = scope.exc.exercise.length;
-                  
-                  //promise = $interval(timer, 1000, [totalTime, exeIndex, switchTime, scope.exc, scope.exc.exercise.length]);
+                  var time = totalTime;
+                  scope.paused = false;
+
+                  //Announce before interval start workout
+                  announceWorkOut('Begin!');
+                  announceWorkOut(scope.exc.exercise[exeIndex].exercName);
                   
                   promise = $interval(timer, 1000);
                 };
-                
+               
+               scope.start();
             }
         };
     }
