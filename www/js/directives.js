@@ -126,13 +126,12 @@ angular.module('circuit.directives', ['ionic', 'ui.router']).directive('circuit'
                 };
 
                 scope.start = function() {
-                  scope.stop();
-                  var totalTime = getTotalTime(scope.exc);
-                  var exeIndex = 0; //Sets the index what will increment to switch workouts
-                  var switchTime = getFirstSwitchTime(totalTime, scope.exc, exeIndex);
-                  var totalExe = scope.exc.exercise.length;
-                  //promise = $interval(timer, 1000, [totalTime, exeIndex, switchTime, scope.exc, scope.exc.exercise.length]);
-                  promise = $interval(function(){
+                  scope.stop = function() {
+                    promise = $interval.cancel(promise);
+                  };
+
+                  scope.continue = function() {
+                    promise = $interval(function(){
                       var exercise = scope.exc;
                       $log.log('Time to Switch in loop: ' + switchTime);
                       $log.log('Total Exer: ' + totalExe);
@@ -182,19 +181,73 @@ angular.module('circuit.directives', ['ionic', 'ui.router']).directive('circuit'
                           scope.stop();
                       }
                   }, 1000);
+                  };
+                  scope.kill = function() {
+                    scope.stop();
+                    $state.go('app.dash');
+                  };
+
+                  scope.stop();
+
+                  var totalTime = getTotalTime(scope.exc);
+                  var exeIndex = 0; //Sets the index what will increment to switch workouts
+                  var switchTime = getFirstSwitchTime(totalTime, scope.exc, exeIndex);
+                  var totalExe = scope.exc.exercise.length;
+                  
+                  //promise = $interval(timer, 1000, [totalTime, exeIndex, switchTime, scope.exc, scope.exc.exercise.length]);
+                  
+                  promise = $interval(function(){
+                      var exercise = scope.exc;
+                      $log.log('Time to Switch in loop: ' + switchTime);
+                      $log.log('Total Exer: ' + totalExe);
+                      //To show total time left of the work out
+                      scope.totalTime = totalTime;
+                      //Set up curent scope for exercise
+                      scope.curExe = exercise.exercise[exeIndex];
+                      //Update circle timer
+                      /*mainTotalTimer.animate(totalTime / time, function() {
+                          mainTotalTimer.setText(scope.curExe.exercName)
+                      });*/
+                      //Update current workout
+                      //workoutTimer.animate(totalTime / switchTime);
+                      //Set up popup description for the workouts
+                      scope.showExerDesc = function() {
+                          scope.stop();
+                          var popUp = $ionicPopup.alert({
+                              title: scope.curExe.exercName,
+                              template: scope.curExe.exercDesc,
+                              subTitle: 'Authors source: ' + scope.curExe.exercRefLink
+                          });
+                          popUp.then(function() {
+                              scope.start();
+                          })
+                      }
+                      //Update total time
+                      totalTime -= 1000;
+                      //Decrease time for update
+                      scope.exerciseTime -= 1000;
+                      //When time matches
+                      if (switchTime == totalTime) {
+                          //Move to the next workout
+                          exeIndex++;
+                          //Announce workout
+                          announceWorkOut(exercise.exercise[exeIndex].exercName);
+                          //Update the new switch
+                          switchTime = totalTime - exercise.exercise[exeIndex].exercTime;
+                          scope.exerciseTime = exercise.exercise[exeIndex].exercTime + 1000;
+                          //Reupdate time with next workout
+                          $log.log('Next exe: ' + exercise.exercise[exeIndex].exercName);
+                      }
+                      //Stops
+                      if (totalTime < 0) {
+                          //Announce finish
+                          //announceWorkOut(completion.header);
+                          //mainTotalTimer.setText(completion.header);
+                          scope.stop();
+                      }
+                  }, 1000);
                 };
                 
-                scope.stop = function() {
-                  promise = $interval.cancel(promise);
-                };
-
-                scope.continue = function() {
-                  
-                }
-                scope.kill = function() {
-                  scope.stop();
-                  $state.go('app.dash');
-                };
             }
         };
     }
