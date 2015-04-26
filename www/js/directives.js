@@ -18,13 +18,14 @@ angular.module('circuit.directives', ['ionic', 'ui.router']).directive('circuit'
                   text:{value: 'Total Workout Time left'}
                 });
 
-                var workoutTimer = new ProgressBar.Circle('#workoutTimer', {
+                //Will be worked on in the next release
+                /*var workoutTimer = new ProgressBar.Circle('#workoutTimer', {
                   color: "#59FF12",
                   strokeWidth: 2.1,
                   trailColor: "#FFF",
                   easing: 'easeOut',
                   text:{value: 'Next'}
-                });
+                });*/
 
                 $log.log(scope.exc.exercise);
 
@@ -53,7 +54,8 @@ angular.module('circuit.directives', ['ionic', 'ui.router']).directive('circuit'
                 scope.start = function() {
 
                     var completion = {
-                      header: 'You Have finished your circuit!'
+                      header: 'You Have finished your circuit!',
+                      desc: 'You have completed this circuit! <span class="ion-checkmark-round"></span>'
                     };
 
                     var timer = function() { /*totalTime, exeIndex, switchTime, exercise, totalExe*/
@@ -71,19 +73,28 @@ angular.module('circuit.directives', ['ionic', 'ui.router']).directive('circuit'
                           mainTotalTimer.setText(scope.curExe.exercName);
                         }
                       });
-                      //Update current workout
-                      workoutTimer.animate(totalTime / switchTime);
+                      //Will be worked on the next release
+                      //workoutTimer.animate(totalTime / switchTime);
                       //Set up popup description for the workouts
                       scope.showExerDesc = function() {
                           scope.stop();
-                          var popUp = $ionicPopup.alert({
-                              title: scope.curExe.exercName,
-                              template: scope.curExe.exercDesc,
-                              subTitle: 'Authors source: ' + scope.curExe.exercRefLink
-                          });
-                          popUp.then(function() {
-                              scope.continue();
-                          })
+
+                          if (totalTime <= 0) {
+                            var popUp = $ionicPopup.alert({
+                                title: completion.header,
+                                template: completion.desc,
+                                subTitle: 'Authors source: <a href="http://joshvee.com" >Joshvee.com</a>'
+                            });
+                          } else {
+                            var popUp = $ionicPopup.alert({
+                                title: scope.curExe.exercName,
+                                template: scope.curExe.exercDesc,
+                                subTitle: 'Authors source: <a href="' + scope.curExe.exercRefLink+'">'+scope.curExe.exercRefLink+'</a>'
+                            });
+                            popUp.then(function() {
+                                scope.continue();
+                            });
+                          }
                       }
                       //Update total time
                       totalTime -= 1000;
