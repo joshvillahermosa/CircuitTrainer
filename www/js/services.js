@@ -6,8 +6,9 @@ angular.module('circuit.services', [])
       return $http.get('exercises/'+exercise+'/index.json');
     }
   };
-})
+});
 
+/*
 .service('timerStartCheck', function(){
   var isStart;
 
@@ -23,4 +24,4 @@ angular.module('circuit.services', [])
     setIsStart: setIsStart,
     getIsStart: getIsStart
   }
-});
+});*/
