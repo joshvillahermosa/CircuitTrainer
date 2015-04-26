@@ -61,7 +61,11 @@ ion-content{
   background-color: transparent;
   color: #4AB2FF;
 }
-
+.button-restart {
+  border-color: #21FA00;
+  background-color: transparent;
+  color: #21FA00;
+}
 .button-cancel {
   border-color: #FF0000;
   background-color: transparent;
