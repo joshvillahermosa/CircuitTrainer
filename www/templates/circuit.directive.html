@@ -24,10 +24,10 @@
         </div>
   
         <div class="row">
-          <button class="button button-cancel col col-100" ng-click="kill()">Cancel Circuit</button>
+          <button class="button button-cancel col col-100" ng-click="kill()"><span ng-show="!finished">Cancel Circuit</span><span ng-hide="!finished">Exit</span></button>
         </div>
         <div class="row">
-          <button class="button button-cancel col col-100" ng-click="start()">Reset</button>
+          <button ng-show="canceled == true" class="button button-restart col col-100" ng-click="start()">Reset</button>
         </div>
         <!-- Add Reset button-->
     </div>
