@@ -7,3 +7,21 @@ angular.module('circuit.services', [])
     }
   };
 });
+
+/*
+.service('timerStartCheck', function(){
+  var isStart;
+
+  var setIsStart = function(didStart){
+    isStart = didStart;
+  };
+
+  var getIsStart = function() {
+    return isStart;
+  };
+
+  return {
+    setIsStart: setIsStart,
+    getIsStart: getIsStart
+  }
+});*/

@@ -45,22 +45,27 @@ ion-content{
   border-color: #E8D101;
   background-color: transparent;
   color: #E8D101;
-  margin: 5px;
+  margin-left: 2px;
+  margin-right: -2px;
 }
 
 .button-continue {
   border-color: #05E88F;
   background-color: transparent;
   color: #05E88F;
-  margin: 5px;
+  margin-left: 2px;
+  margin-right: -2px;
 }
 .button-info {
   border-color: #4AB2FF;
   background-color: transparent;
   color: #4AB2FF;
-  margin: 5px;
 }
-
+.button-restart {
+  border-color: #21FA00;
+  background-color: transparent;
+  color: #21FA00;
+}
 .button-cancel {
   border-color: #FF0000;
   background-color: transparent;

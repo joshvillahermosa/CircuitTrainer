@@ -1,175 +1,170 @@
-angular.module('circuit.directives', ['ionic', 'ui.router'])
+angular.module('circuit.directives', ['ionic', 'ui.router']).directive('circuit', ['$interval', '$log', '$ionicPopup', '$state', 
+    function($interval, $log, $ionicPopup, $state) {
+        return {
+            restrict: 'E',
+            scope: {
+                exc: '=',
+            },
+            replace: 'true',
+            templateUrl: '/templates/circuit.directive.html',
+            link: function(scope, element) {
+                var promise;
 
-.directive('circuit', [ '$interval', '$log', '$ionicPopup', '$state', function($interval, $log, $ionicPopup, $state){
-  return {
-    restrict: 'E',
-    scope: {
-      exercise: '='
-    },
-    replace: 'true',
-    templateUrl: '/templates/circuit.directive.html',
-    link: function(scope, element) {
+                var mainTotalTimer = new ProgressBar.Circle('#totalTimer', {
+                  color: "#59FF12",
+                  strokeWidth: 2.1,
+                  trailColor: "#FFF",
+                  easing: 'easeOut',
+                  text:{value: 'Total Workout Time left'}
+                });
 
-      //To announce workout
-      var announceWorkOut = function(message) {
-        var msg = new SpeechSynthesisUtterance(message);
-        window.speechSynthesis.speak(msg);
-      };
+                //Will be worked on in the next release
+                /*var workoutTimer = new ProgressBar.Circle('#workoutTimer', {
+                  color: "#59FF12",
+                  strokeWidth: 2.1,
+                  trailColor: "#FFF",
+                  easing: 'easeOut',
+                  text:{value: 'Next'}
+                });*/
 
-      //Completion Message
-      var completion = {
-        header: 'You Have finished your circuit!'
-      };
+                $log.log(scope.exc.exercise);
 
-      //Total time of the whole work out
-      var totalTime = 0;
-      
-      //Get total Exe count
-      var totalExe = scope.exercise.exercise.length;
+                var getTotalTime = function(exercise) {
+                  var totalTime = 0;
+                  var totalExe = exercise.exercise.length
+                  for(var time = 0; time < totalExe; time++){
+                    totalTime += exercise.exercise[time].exercTime;
+                  }
 
-      //Captures total time
-      for(var time = 0; time < totalExe; time++){
-        totalTime += scope.exercise.exercise[time].exercTime;
-      }
+                  $log.log('Total time in miliseconds: '+totalTime);
+                  return totalTime;
+                };
 
-      $log.log('Total time: '+ totalTime);
+                var getFirstSwitchTime = function(totalTime, exercise, exeIndex){
+                  var switchTime = totalTime - exercise.exercise[exeIndex].exercTime;
+                  $log.log('First switch time: '+switchTime);
+                  return switchTime;
+                };
 
-      //Display time
-      scope.totalTime = totalTime;
-      var time = totalTime;
+                var announceWorkOut = function(message) {
+                  var msg = new SpeechSynthesisUtterance(message);
+                  window.speechSynthesis.speak(msg);
+                };
 
-      //Set up exercise index to move from one workout to another
-      var exeIndex = 0;
+                scope.start = function() {
 
-      //Time to switch
-      var switchTime = totalTime - scope.exercise.exercise[exeIndex].exercTime;
-      $log.log('Time to Switch for the first time: '+switchTime);
+                    var completion = {
+                      header: 'You Have finished your circuit!',
+                      desc: 'You have completed this circuit! <span class="ion-checkmark-round"></span>'
+                    };
 
-      //Announce before interval start workout
-      announceWorkOut('Begin!');
-      announceWorkOut(scope.exercise.exercise[exeIndex].exercName);
+                    var timer = function() { /*totalTime, exeIndex, switchTime, exercise, totalExe*/
+                      $log.log('Time to Switch in loop: ' + switchTime);
+                      $log.log('Total Exer: ' + totalExe);
+                      //To show total time left of the work out
+                      scope.totalTime = totalTime;
+                      //Set up curent scope for exercise
+                      scope.curExe = exercise.exercise[exeIndex];
+                      //Update circle timer
+                      mainTotalTimer.animate(totalTime / time, function() {
+                        if(totalTime == 0) {
+                          mainTotalTimer.setText('Circuit complete');
+                        } else {
+                          mainTotalTimer.setText(scope.curExe.exercName);
+                        }
+                      });
+                      //Will be worked on the next release
+                      //workoutTimer.animate(totalTime / switchTime);
+                      //Set up popup description for the workouts
+                      scope.showExerDesc = function() {
+                          scope.stop();
 
-      //Exercise Time to update
-      scope.exerciseTime = scope.exercise.exercise[exeIndex].exercTime +1000;
+                          if (totalTime <= 0) {
+                            var popUp = $ionicPopup.alert({
+                                title: completion.header,
+                                template: completion.desc,
+                                subTitle: 'Authors source: <a href="http://joshvee.com" >Joshvee.com</a>'
+                            });
+                          } else {
+                            var popUp = $ionicPopup.alert({
+                                title: scope.curExe.exercName,
+                                template: scope.curExe.exercDesc,
+                                subTitle: 'Authors source: <a href="' + scope.curExe.exercRefLink+'">'+scope.curExe.exercRefLink+'</a>'
+                            });
+                            popUp.then(function() {
+                                scope.continue();
+                            });
+                          }
+                      }
+                      //Update total time
+                      totalTime -= 1000;
+                      //Decrease time for update
+                      scope.exerciseTime -= 1000;
+                      //When time matches
+                      if (switchTime == totalTime) {
+                          //Move to the next workout
+                          exeIndex++;
+                          //Announce workout
+                          announceWorkOut(exercise.exercise[exeIndex].exercName);
+                          //Update the new switch
+                          switchTime = totalTime - exercise.exercise[exeIndex].exercTime;
+                          scope.exerciseTime = exercise.exercise[exeIndex].exercTime + 1000;
+                          //Reupdate time with next workout
+                          $log.log('Next exe: ' + exercise.exercise[exeIndex].exercName);
+                      }
+                      //Stops
+                      if (totalTime < 0) {
+                          //Announce finish
+                          announceWorkOut(completion.header);
+                          mainTotalTimer.setText(completion.header);
+                          scope.finished = true;
+                          scope.stop();
+                      }
+                  };
 
-      // Total Time -- Circle bar
-      var mainTotalTimer = new ProgressBar.Circle('#totalTimer', {
-        color: "#59FF12",
-        strokeWidth: 2.1,
-        trailColor: "#FFF",
-        easing: 'easeOut',
-        text:{value: 'Total Workout Time left'}
-      });
+                  scope.stop = function() {
+                    scope.paused = true;
+                    promise = $interval.cancel(promise);
+                  };
 
-      var workoutTimer = new ProgressBar.Circle('#workoutTimer', {
-        color: "#59FF12",
-        strokeWidth: 2.1,
-        trailColor: "#FFF",
-        easing: 'easeOut',
-        text:{value: 'Next'}
-      });
+                  scope.continue = function() {
+                    scope.paused = false;
+                    promise = $interval(timer, 1000);
+                  };
+                  scope.kill = function() {
 
+                    var exercise = scope.exc;
+                    var totalTime = getTotalTime(scope.exc);
+                    var exeIndex = 0; //Sets the index what will increment to switch workouts
+                    var switchTime = getFirstSwitchTime(totalTime, scope.exc, exeIndex);
+                    var totalExe = scope.exc.exercise.length;
+                    var time = totalTime;
+                    scope.paused = true;
+                    scope.canceled = true
+                    scope.stop();
+                    $state.go('app.dash');
+                  };
 
-      var timer = function(){
-        $log.log('Time to Switch in loop: '+switchTime);
-        $log.log('Total Exer: '+totalExe);
+                  scope.stop();
 
-        //To show total time left of the work out
-        scope.totalTime = totalTime;
+                  var exercise = scope.exc;
+                  var totalTime = getTotalTime(scope.exc);
+                  var exeIndex = 0; //Sets the index what will increment to switch workouts
+                  var switchTime = getFirstSwitchTime(totalTime, scope.exc, exeIndex);
+                  var totalExe = scope.exc.exercise.length;
+                  var time = totalTime;
+                  scope.paused = false;
 
-        //Set up curent scope for exercise
-        scope.curExe = scope.exercise.exercise[exeIndex]; 
-
-        //Update circle timer
-        mainTotalTimer.animate(totalTime/time, function(){
-          mainTotalTimer.setText(scope.curExe.exercName)
-        });
-
-        //Update current workout
-        workoutTimer.animate(totalTime/switchTime);
-
-        //Set up popup description for the workouts
-        scope.showExerDesc = function(){
-          scope.stop();
-          var popUp = $ionicPopup.alert({
-            title: scope.curExe.exercName,
-            template: scope.curExe.exercDesc,
-            subTitle: 'Authors source: '+scope.curExe.exercRefLink
-          });
-
-          popUp.then(function(){
-            scope.start();
-          })
-        }
-
-        //Update total time
-        totalTime -= 1000;
-        //Decrease time for update
-        scope.exerciseTime -= 1000;
-
-
-        //When time matches
-        if(switchTime == totalTime){
-          //Move to the next workout
-          exeIndex++;
-
-          //Announce workout
-          announceWorkOut(scope.exercise.exercise[exeIndex].exercName);
-
-          //Update the new switch
-          switchTime = totalTime - scope.exercise.exercise[exeIndex].exercTime;
-          scope.exerciseTime = scope.exercise.exercise[exeIndex].exercTime + 1000;
-
-          //Reupdate time with next workout
-          $log.log('Next exe: '+ scope.exercise.exercise[exeIndex].exercName);
-        }
-
-        //Stops
-        if (totalTime < 0) {
-
-          //Sets complettion message
-
-          //Announce finish
-          announceWorkOut(completion.header);
-          mainTotalTimer.setText(completion.header);
-          $interval.cancel(promis);
-        } 
-      };
-      //var counter = $interval(timer, 1000);
-
-      //Starts timer
-      scope.start = function(){
-        scope.stop;
-        scope.paused = false;
-        promis = $interval(timer, 1000); 
-      };
-
-      //Stops or pauses
-      scope.stop = function(){
-        scope.paused = true;
-        $interval.cancel(promis);
-      };
-
-      //Cancels overall
-      scope.cancel = function() {
-        $log.log('Cancelling');
-        
-        
-        //Reset Variables
-        exeIndex = 0;
-        switchTime = totalTime - scope.exercise.exercise[exeIndex].exercTime;
-        scope.exerciseTime = scope.exercise.exercise[exeIndex].exercTime +1000;
-
-        //Supposed to change states
-        $state.transitionTo('app.dash');
-        $log.log('Done');
-      };
-
-      element.on('$destroy', function() {
-        scope.stop();
-        $log.log('HIT');
-      });
-      scope.start();
+                  //Announce before interval start workout
+                  announceWorkOut('Begin!');
+                  announceWorkOut(scope.exc.exercise[exeIndex].exercName);
+                  
+                  promise = $interval(timer, 1000);
+                  scope.canceled = false;
+                  scope.finished = false;
+                };
+                scope.start();
+            }
+        };
     }
-  };
-}]);
+]);

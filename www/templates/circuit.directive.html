@@ -2,15 +2,15 @@
     <div class="item item-body center">
         <div class="row">
 
-            <span class="col col-75">
+            <span class="col col-100">
               <div id="totalTimer"></div>
               <h2 class="time">{{totalTime | date:'m:ss'}}</h2>
             </span>
 
-            <span class="col col-25">
+            <!--<span class="col col-25">
               <div id="workoutTimer"></div>
               <h2 class="time">{{exerciseTime | date:'m:ss'}}</h2>
-            </span>
+            </span>-->
         </div>
 
         <div class="row">
@@ -18,21 +18,17 @@
           <button ng-show="!paused" class="button button-pause col col-50" ng-click="stop()">
           Pause <span class="icon ion-android-stopwatch"></span>          
           </button>
-          <button ng-hide="!paused" class="button button-continue col col-50" ng-click="start()">
+          <button ng-hide="!paused" class="button button-continue col col-50" ng-click="continue()">
           Continue <span class="icon ion-android-stopwatch"></span>
           </button>
         </div>
-
-        <!-- Pause/Continue Button-->
-        <div class="center row" >
-          
+  
+        <div class="row">
+          <button class="button button-cancel col col-100" ng-click="kill()"><span ng-show="!finished">Cancel Circuit</span><span ng-hide="!finished">Exit</span></button>
         </div>
-
-        <div class="center row" >
-          
+        <div class="row">
+          <button ng-show="canceled == true" class="button button-restart col col-100" ng-click="start()">Reset/Start</button>
         </div>
-        <!-- END Pause/Continue Button-->
-
         <!-- Add Reset button-->
     </div>
 </div>
