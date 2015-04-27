@@ -118,8 +118,8 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
                 //Announce finish
                 announceWorkOut(completion.header);
                 mainTotalTimer.setText(completion.header);
-                scope.finished = true;
-                scope.stop();
+                $scope.finished = true;
+                $scope.stop();
             }
         };
         $scope.stop = function() {
