@@ -1,18 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="0.6.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.circuittrainer880676" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>CircuitTrainer</name>
+  <name>10 Minute Ab Workout</name>
   <description>
-        An Ionic Framework and Cordova project.
+        A simple 10 minute ab workout
     </description>
-  <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
+  <author email="joshvillahermosa@gmail.com" href="http://joshvee.com/">
+      Circuit Training
     </author>
   <content src="index.html"/>
   <access origin="*"/>
-  <preference name="webviewbounce" value="false"/>
-  <preference name="UIWebViewBounce" value="false"/>
+  <preference name="webviewbounce" value="true"/>
+  <preference name="UIWebViewBounce" value="true"/>
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="BackupWebStorage" value="none"/>
+  <preference name="KeepRunning" value="true"/>
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
