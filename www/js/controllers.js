@@ -1,4 +1,4 @@
-angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit.directives', 'ionic']).controller('DashCtrl', function($scope, $log, $state, exerc) {
+angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit.directives', 'ionic', 'ngCordova']).controller('DashCtrl', function($scope, $log, $state, exerc) {
     var data = exerc.data;
     $log.info(data);
     $scope.exerc = exerc.data;
@@ -15,7 +15,7 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
         }
         return totalTime;
     }
-}).controller('CircuitCtrl', function($scope, $log, $interval, $state, $ionicPopup, exerc) {
+}).controller('CircuitCtrl', function($scope, $log, $interval, $state, $ionicPopup, $cordovaMedia, exerc) {
     $log.log(exerc.data);
     $scope.exc = exerc.data;
     var promise;
@@ -36,6 +36,7 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
                   easing: 'easeOut',
                   text:{value: 'Next'}
                 });*/
+
     $log.log($scope.exc.exercise);
     var getTotalTime = function(exercise) {
         var totalTime = 0;
@@ -51,9 +52,9 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
         $log.log('First switch time: ' + switchTime);
         return switchTime;
     };
-    var announceWorkOut = function(message) {
-        var msg = new SpeechSynthesisUtterance(message);
-        window.speechSynthesis.speak(msg);
+    var announceWorkOut = function(src) {
+        var media = $cordovaMedia.newMedia(src);
+        media.play();
     };
     $scope.start = function() {
         var completion = {
@@ -106,7 +107,7 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
                 //Move to the next workout
                 exeIndex++;
                 //Announce workout
-                announceWorkOut(exercise.exercise[exeIndex].exercName);
+                //announceWorkOut(exercise.exercise[exeIndex].exercName);
                 //Update the new switch
                 switchTime = totalTime - exercise.exercise[exeIndex].exercTime;
                 $scope.exerciseTime = exercise.exercise[exeIndex].exercTime + 1000;
@@ -116,7 +117,7 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
             //Stops
             if (totalTime < 0) {
                 //Announce finish
-                announceWorkOut(completion.header);
+                //announceWorkOut(completion.header);
                 mainTotalTimer.setText(completion.header);
                 $scope.finished = true;
                 $scope.stop();
@@ -151,8 +152,9 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
         var time = totalTime;
         $scope.paused = false;
         //Announce before interval start workout
-        announceWorkOut('Begin!');
-        announceWorkOut($scope.exc.exercise[exeIndex].exercName);
+        announceWorkOut('mp3s/begin.mp3');
+        
+        //announceWorkOut($scope.exc.exercise[exeIndex].exercName);
         promise = $interval(timer, 1000);
         $scope.canceled = false;
         $scope.finished = false;

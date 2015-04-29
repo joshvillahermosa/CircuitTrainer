@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('circuit', ['ionic', 'circuit.controllers', 'circuit.services', 'circuit.directives'])
+angular.module('circuit', ['ionic', 'circuit.controllers', 'circuit.services', 'circuit.directives', 'ngCordova'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
