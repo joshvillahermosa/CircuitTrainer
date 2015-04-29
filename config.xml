@@ -13,9 +13,6 @@
   <preference name="UIWebViewBounce" value="true"/>
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="BackupWebStorage" value="none"/>
-
-  <gap:plugin name="org.apache.cordova.media" version="0.2.13" />
-
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
