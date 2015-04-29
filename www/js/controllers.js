@@ -15,7 +15,7 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
         }
         return totalTime;
     }
-}).controller('CircuitCtrl', function($scope, $log, $interval, $state, $ionicPopup, $cordovaMedia, exerc) {
+}).controller('CircuitCtrl', function($scope, $log, $interval, $state, $ionicPopup, $cordovaNativeAudio, exerc) {
     $log.log(exerc.data);
     $scope.exc = exerc.data;
     var promise;
@@ -53,8 +53,16 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
         return switchTime;
     };
     var announceWorkOut = function(src) {
-        var media = $cordovaMedia.newMedia(src);
-        media.play();
+        
+        $cordovaNativeAudio
+        .preloadSimple('click', src)
+        .then(function (msg) {
+          console.log(msg);
+        }, function (error) {
+          alert(error);
+        });
+
+        $cordovaNativeAudio.play('click');
     };
     $scope.start = function() {
         var completion = {
