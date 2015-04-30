@@ -52,17 +52,39 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
         $log.log('First switch time: ' + switchTime);
         return switchTime;
     };
-    var announceWorkOut = function(src) {
+
+    //This section will need to me modulized into a service
+    var setUpMedia = function() {
         
         $cordovaNativeAudio
-        .preloadSimple('click', src)
+        .preloadSimple('begin', 'mp3s/begin.mp3')
         .then(function (msg) {
-          console.log(msg);
+          $log.log('Audio loaded -Begin-, messaged: '+msg);
         }, function (error) {
-          alert(error);
+          $log.error(error);
         });
 
-        $cordovaNativeAudio.play('click');
+        $cordovaNativeAudio
+        .preloadSimple('end', 'mp3s/completed.mp3')
+        .then(function (msg) {
+          $log.log('Audio loaded -Begin-, messaged: '+msg);
+        }, function (error) {
+          $log.error(error);
+        });
+
+        //Create the media to be played from the exercises array
+        var exercisesLength = $scope.exc.exercise.length;
+        $log.log('Total Exercises: '+exercisesLength);
+
+        for(var index = 0; index < exercisesLength; index++){
+            $cordovaNativeAudio
+            .preloadSimple($scope.exc.exercise[index].exercName, '/exercises/'+$scope.exc.folderName+'/'+$scope.exc.audioFolder+'/'+$scope.exc.exercise[index].audio)
+            .then(function (msg) {
+              $log.log('Audio loaded -'+$scope.exc.exercise[index].exercName+'-, messaged: '+msg);
+            }, function (error) {
+              $log.error(error);
+            });
+        }
     };
     $scope.start = function() {
         var completion = {
@@ -125,7 +147,7 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
             //Stops
             if (totalTime < 0) {
                 //Announce finish
-                //announceWorkOut(completion.header);
+                $cordovaNativeAudio.play('end');
                 mainTotalTimer.setText(completion.header);
                 $scope.finished = true;
                 $scope.stop();
@@ -160,12 +182,13 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
         var time = totalTime;
         $scope.paused = false;
         //Announce before interval start workout
-        announceWorkOut('mp3s/begin.mp3');
+        $cordovaNativeAudio.play('begin');
         
         //announceWorkOut($scope.exc.exercise[exeIndex].exercName);
         promise = $interval(timer, 1000);
         $scope.canceled = false;
         $scope.finished = false;
     };
+    setUpMedia();
     $scope.start();
 });
