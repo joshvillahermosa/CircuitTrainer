@@ -1,49 +1,46 @@
 {
-    "name": "10 Minute Abb Workout",
-    "id": "",
-    "author": "Joshua John Villahermosa",
-    "created": "April 1st, 2015",
-    "updated": "April 2nd, 2015",
-    "desc": "A 10 minute intesive abb Workout. This will test your core and improve your abs",
-    "folderName": "10AbbWorkout",
-    "audioFolder" : "audio",
-    "tags": [
-      "Abdominals",
-      "Obliques"
-    ],
-    "exercise": [
-
+  "name": "10 Minute Abb Workout",
+  "id": "",
+  "author": "Joshua John Villahermosa",
+  "created": "April 1st, 2015",
+  "updated": "April 2nd, 2015",
+  "desc": "A 10 minute intesive abb Workout. This will test your core and improve your abs",
+  "folderName": "10AbbWorkout",
+  "audioFolder": "audio",
+  "tags": [
+    "Abdominals",
+    "Obliques"
+  ],
+  "exercise": [
+    {
+      "audio": "situps.mp3",
+      "exercName": "Situps",
+      "exercDesc": "The leg raise is the perfect exercise for the somewhat neglected lower abdominals and hip flexors. Regular performance of leg raises can help to strengthen the lower back and therefore reduce the risk of injuries. You will need a mat to lie on for this exercise and some people who experience lower back pain may want to pop a towel under their lower back area.",
+      "exercTime": 40000,
+      "exercRefLink": "http://30dayfitnesschallenges.com/how-to-do-leg-raises/",
+      "exercImg": [
         {
-        "audio": "situps.mp3",
-        "exercName": "Situps",
-        "exercDesc": "The sit-up is an abdominal strength training exercise commonly performed to strengthen the abdominal muscles. It is similar to a crunch (crunches target the rectus abdominus and also work the external and internal obliques), but sit-ups have a fuller range of motion and condition additional muscles. Sit-ups target the hip flexors, rectus abdominus and also work the iliopsoas, tensor fasciae latae, rectus femoris, sartorius, and, to a very small degree, the obliques.",
-        "exercTime": 40000,
-        "exercRefLink": "http://en.wikipedia.org/wiki/Sit-up",
-        "exercImg": [
-            {
-                "exercImgName": "",
-                "exercImgRef": "http://upload.wikimedia.org/wikipedia/commons/8/87/Crunches.jpg"
-            }
-        ]
-        },
-
+          "exercImgName": "",
+          "exercImgRef": ""
+        }
+      ]
+    },
+    {
+      "audio": "flat-leg-situps.mp3",
+      "exercName": "Flat Leg Situps",
+      "exercDesc": "The key to a flat, toned stomach is to perform a variety of abdominal exercises. Straight-leg situps work different muscles in your midsection and can tone your lower and upper abs, sides and lower back. Different variations of the straight-leg situp can also work portions of your legs and backside.",
+      "exercTime": 40000,
+      "exercRefLink": "http://www.livestrong.com/article/475783-straight-leg-situps/",
+      "exercImg": [
         {
-        "audio": "flat-leg-crunches.mp3",
-        "exercName": "Flat Leg Crunches",
-        "exercDesc": "The key to a flat, toned stomach is to perform a variety of abdominal exercises. Straight-leg situps work different muscles in your midsection and can tone your lower and upper abs, sides and lower back. Different variations of the straight-leg situp can also work portions of your legs and backside.",
-        "exercTime": 40000,
-        "exercRefLink": "http://www.livestrong.com/article/475783-straight-leg-situps/",
-        "exercImg": [
-            {
-                "exercImgName": "",
-                "exercImgRef": ""
-            }
-        ]
-        },
-
-        {
-        "audio": "crunches.mp3",
-        "exercName": "Crunches",
+          "exercImgName": "",
+          "exercImgRef": ""
+        }
+      ]
+    },
+      {
+        "audio": "leg-raises.mp3",
+        "exercName": "Leg Raises",
         "exercDesc": "The leg raise is the perfect exercise for the somewhat neglected lower abdominals and hip flexors. Regular performance of leg raises can help to strengthen the lower back and therefore reduce the risk of injuries. You will need a mat to lie on for this exercise and some people who experience lower back pain may want to pop a towel under their lower back area.",
         "exercTime": 40000,
         "exercRefLink": "http://30dayfitnesschallenges.com/how-to-do-leg-raises/",
@@ -54,198 +51,214 @@
             }
         ]
         },
+    {
+      "audio": "circular-crunches.mp3",
+      "exercName": "Circular Crunches",
+      "exercDesc": "To do a circle crunch get in the normal crunch position and bend your upper body to the left(or right for right circle), pull it up to your knees and then lower it to the right(or left for right crunches). this is one repetition, remember to go to the right and to the left.",
+      "exercTime": 40000,
+      "exercRefLink": "http://www.instructables.com/id/Navy-Seals-Ab-Workout/step5/Circle-Crunches/",
+      "exercImg": [
         {
-        "exercName": "Circular Curnches",
-        "exercDesc": "To do a circle crunch get in the normal crunch position and bend your upper body to the left(or right for right circle), pull it up to your knees and then lower it to the right(or left for right crunches). this is one repetition, remember to go to the right and to the left.",
-        "exercTime": 40000,
-        "exercRefLink": "http://www.instructables.com/id/Navy-Seals-Ab-Workout/step5/Circle-Crunches/",
-        "exercImg": [
-            {
-                "exercImgName": "",
-                "exercImgRef": "http://upload.wikimedia.org/wikipedia/commons/8/87/Crunches.jpg"
-            }
-        ]
-        },
-        {
-        "exercName": "(Switch)Circular Curnches",
-        "exercDesc": "To do a circle crunch get in the normal crunch position and bend your upper body to the left(or right for right circle), pull it up to your knees and then lower it to the right(or left for right crunches). this is one repetition, remember to go to the right and to the left.",
-        "exercTime": 40000,
-        "exercRefLink": "http://www.instructables.com/id/Navy-Seals-Ab-Workout/step5/Circle-Crunches/",
-        "exercImg": [
-            {
-                "exercImgName": "",
-                "exercImgRef": "http://upload.wikimedia.org/wikipedia/commons/8/87/Crunches.jpg"
-            }
-        ]
-        },
-        {
-        "exercName": "Heel Touches",
-        "exercDesc": "Lie on the floor with the knees bent and the feet on the floor around 18-24 inches apart. Your arms should be extended by your side. This will be your starting position. Crunch over your torso forward and up about 3-4 inches to the right side and touch your right heel as you hold the contraction for a second. Exhale while performing this movement. Now go back slowly to the starting position as you inhale. Now crunch over your torso forward and up around 3-4 inches to the left side and touch your left heel as you hold the contraction for a second. Exhale while performing this movement and then go back to the starting position as you inhale. Now that both heels have been touched, that is considered 1 repetition. Continue alternating sides in this manner until all prescribed repetitions are done.",
-        "exercTime": 40000,
-        "exercRefLink": "http://www.bodybuilding.com/exercises/detail/view/name/alternate-heel-touchers",
-        "exercImg": [
-            {
-                "exercImgName": "",
-                "exercImgRef": "http://upload.wikimedia.org/wikipedia/commons/8/87/Crunches.jpg"
-            }
-        ]
-        },
-        {
-        "exercName": "Cruches",
-        "exercDesc": "The basic crunch is the consummate abdominal exercise in a strength-training program. Pay special attention to your form when you do crunches, especially if you have lower-back or neck problems.",
-        "exercTime": 40000,
-        "exercRefLink": "http://www.dummies.com/how-to/content/how-to-do-crunches.html",
-        "exercImg": [
-            {
-                "exercImgName": "",
-                "exercImgRef": "http://upload.wikimedia.org/wikipedia/commons/8/87/Crunches.jpg"
-            }
-        ]
-        },
-        {
-        "exercName": "Straight Cruches",
-        "exercDesc": "The vertical leg crunch is another effective move for the rectus abdominis and the obliques. It's similar to a regular crunch, but your legs are straight up, forcing you to use your abs to do all the work and adding intensity to the exercise.",
-        "exercTime": 40000,
-        "exercRefLink": "http://exercise.about.com/od/abs/ss/abexercises_4.html",
-        "exercImg": [
-            {
-                "exercImgName": "",
-                "exercImgRef": "http://upload.wikimedia.org/wikipedia/commons/8/87/Crunches.jpg"
-            }
-        ]
-        },
-        {
-        "exercName": "Flutter Kicks",
-        "exercDesc": "Start by lying flat on your back on a mat with your arms by your sides and your palms down. Extend your legs fully out with a slight bend in your knees. Lift your heels about 6 inches off the floor. Make small, rapid up and down scissor-like motions with your legs. The key is to focus on having your midsection do all the work and to keep your abs constantly contracted throughout the exercise.",
-        "exercTime": 40000,
-        "exercRefLink": "http://www.shapefit.com/exercise-guides/abs-exercises-scissor-kicks.html",
-        "exercImg": [
-            {
-                "exercImgName": "",
-                "exercImgRef": "http://upload.wikimedia.org/wikipedia/commons/8/87/Crunches.jpg"
-            }
-        ]
-        },
-        {
-        "exercName": "Left Over Right Crunches",
-        "exercDesc": "Put your left foot over your right and do crunches",
-        "exercTime": 20000,
-        "exercRefLink": "",
-        "exercImg": [
-            {
-                "exercImgName": "",
-                "exercImgRef": ""
-            }
-        ]
-        },
-        {
-        "exercName": "Left Over Right Lift Crunches",
-        "exercDesc": "Put your left foot over your right and do crunches while lifting your legs.",
-        "exercTime": 15000,
-        "exercRefLink": "",
-        "exercImg": [
-            {
-                "exercImgName": "",
-                "exercImgRef": ""
-            }
-        ]
-        },
-        {
-        "exercName": "Right Over Left Crunches",
-        "exercDesc": "Put your Right foot over your Left and do crunches",
-        "exercTime": 20000,
-        "exercRefLink": "",
-        "exercImg": [
-            {
-                "exercImgName": "",
-                "exercImgRef": ""
-            }
-        ]
-        },
-        {
-        "exercName": "Right Over Left Lift Crunches",
-        "exercDesc": "Put your Right foot over your Left and do crunches while lifting your legs.",
-        "exercTime": 15000,
-        "exercRefLink": "",
-        "exercImg": [
-            {
-                "exercImgName": "",
-                "exercImgRef": ""
-            }
-        ]
-        },
-        {
-        "exercName": "Left Over Right Crunches",
-        "exercDesc": "Put your left foot over your right and do crunches",
-        "exercTime": 20000,
-        "exercRefLink": "",
-        "exercImg": [
-            {
-                "exercImgName": "",
-                "exercImgRef": ""
-            }
-        ]
-        },
-        {
-        "exercName": "Left Over Right Lift Crunches",
-        "exercDesc": "Put your left foot over your right and do crunches while lifting your legs.",
-        "exercTime": 15000,
-        "exercRefLink": "",
-        "exercImg": [
-            {
-                "exercImgName": "",
-                "exercImgRef": ""
-            }
-        ]
-        },
-        {
-        "exercName": "Right Over Left Crunches",
-        "exercDesc": "Put your Right foot over your Left and do crunches",
-        "exercTime": 20000,
-        "exercRefLink": "",
-        "exercImg": [
-            {
-                "exercImgName": "",
-                "exercImgRef": ""
-            }
-        ]
-        },
-        {
-        "exercName": "Right Over Left Lift Crunches",
-        "exercDesc": "Put your Right foot over your Left and do crunches while lifting your legs.",
-        "exercTime": 15000,
-        "exercRefLink": "",
-        "exercImg": [
-            {
-                "exercImgName": "",
-                "exercImgRef": ""
-            }
-        ]
-        },
-        {
-        "exercName": "Bicycles",
-        "exercDesc": "Lie on your back with fingertips behind ears, legs in the air, and knees pulled toward chest. Target your sides and entire ab area by contracting as you lift your shoulder blades off the ground. Straighten your right leg at a 45-degree angle and rotate your upper body to the left, bringing the right elbow toward the left knee. Switch sides by straightening your left leg, bending your right leg, and bringing the left elbow to the right knee. Alternate sides in a pedaling motion",
-        "exercTime": 40000,
-        "exercRefLink": "http://www.realsimple.com/health/fitness-exercise/workouts/stronger-abs-in-fifteen-minutes/bicycle-ab-exercise",
-        "exercImg": [
-            {
-                "exercImgName": "",
-                "exercImgRef": ""
-            }
-        ]
-        },
-        {
-        "exercName": "Plank",
-        "exercDesc": "The plank is one of the best exercises you can do for your core because it builds isometric strength to help sculpt your waistline and improve your posture. And depending on the type of plank you try, you can also engage your back, arms, shoulders, glutes, and hamstrings. Win!",
-        "exercTime": 60000,
-        "exercRefLink": "http://www.health.com/health/gallery/0,,20813896,00.html",
-        "exercImg": [
-            {
-                "exercImgName": "",
-                "exercImgRef": ""
-            }
-        ]
+          "exercImgName": "",
+          "exercImgRef": "http://upload.wikimedia.org/wikipedia/commons/8/87/Crunches.jpg"
         }
-    ],
-    "exerciseTimeInterval": 2000
+      ]
+    },
+    {
+      "audio": "switch-circular-crunches.mp3",
+      "exercName": "(Switch)Circular Crunches",
+      "exercDesc": "To do a circle crunch get in the normal crunch position and bend your upper body to the left(or right for right circle), pull it up to your knees and then lower it to the right(or left for right crunches). this is one repetition, remember to go to the right and to the left.",
+      "exercTime": 40000,
+      "exercRefLink": "http://www.instructables.com/id/Navy-Seals-Ab-Workout/step5/Circle-Crunches/",
+      "exercImg": [
+        {
+          "exercImgName": "",
+          "exercImgRef": "http://upload.wikimedia.org/wikipedia/commons/8/87/Crunches.jpg"
+        }
+      ]
+    },
+    {
+      "audio": "heel-touches.mp3",
+      "exercName": "Heel Touches",
+      "exercDesc": "Lie on the floor with the knees bent and the feet on the floor around 18-24 inches apart. Your arms should be extended by your side. This will be your starting position. Crunch over your torso forward and up about 3-4 inches to the right side and touch your right heel as you hold the contraction for a second. Exhale while performing this movement. Now go back slowly to the starting position as you inhale. Now crunch over your torso forward and up around 3-4 inches to the left side and touch your left heel as you hold the contraction for a second. Exhale while performing this movement and then go back to the starting position as you inhale. Now that both heels have been touched, that is considered 1 repetition. Continue alternating sides in this manner until all prescribed repetitions are done.",
+      "exercTime": 40000,
+      "exercRefLink": "http://www.bodybuilding.com/exercises/detail/view/name/alternate-heel-touchers",
+      "exercImg": [
+        {
+          "exercImgName": "",
+          "exercImgRef": "http://upload.wikimedia.org/wikipedia/commons/8/87/Crunches.jpg"
+        }
+      ]
+    },
+    {
+      "audio": "crunches.mp3",
+      "exercName": "Cruches",
+      "exercDesc": "The basic crunch is the consummate abdominal exercise in a strength-training program. Pay special attention to your form when you do crunches, especially if you have lower-back or neck problems.",
+      "exercTime": 40000,
+      "exercRefLink": "http://www.dummies.com/how-to/content/how-to-do-crunches.html",
+      "exercImg": [
+        {
+          "exercImgName": "",
+          "exercImgRef": "http://upload.wikimedia.org/wikipedia/commons/8/87/Crunches.jpg"
+        }
+      ]
+    },
+    {
+      "audio": "flat-leg-crunches.mp3",
+      "exercName": "Flat Leg Cruches",
+      "exercDesc": "The vertical leg crunch is another effective move for the rectus abdominis and the obliques. It's similar to a regular crunch, but your legs are straight up, forcing you to use your abs to do all the work and adding intensity to the exercise.",
+      "exercTime": 40000,
+      "exercRefLink": "http://exercise.about.com/od/abs/ss/abexercises_4.html",
+      "exercImg": [
+        {
+          "exercImgName": "",
+          "exercImgRef": "http://upload.wikimedia.org/wikipedia/commons/8/87/Crunches.jpg"
+        }
+      ]
+    },
+    {
+      "audio": "flutter-kicks.mp3",
+      "exercName": "Flutter Kicks",
+      "exercDesc": "Start by lying flat on your back on a mat with your arms by your sides and your palms down. Extend your legs fully out with a slight bend in your knees. Lift your heels about 6 inches off the floor. Make small, rapid up and down scissor-like motions with your legs. The key is to focus on having your midsection do all the work and to keep your abs constantly contracted throughout the exercise.",
+      "exercTime": 40000,
+      "exercRefLink": "http://www.shapefit.com/exercise-guides/abs-exercises-scissor-kicks.html",
+      "exercImg": [
+        {
+          "exercImgName": "",
+          "exercImgRef": "http://upload.wikimedia.org/wikipedia/commons/8/87/Crunches.jpg"
+        }
+      ]
+    },
+    {
+      "audio": "left-over-right-crunches.mp3",
+      "exercName": "Left Over Right Crunches",
+      "exercDesc": "Put your left foot over your right and do crunches",
+      "exercTime": 20000,
+      "exercRefLink": "",
+      "exercImg": [
+        {
+          "exercImgName": "",
+          "exercImgRef": ""
+        }
+      ]
+    },
+    {
+      "audio": "left-over-right-lift-crunches.mp3",
+      "exercName": "Left Over Right Lift Crunches",
+      "exercDesc": "Put your left foot over your right and do crunches while lifting your legs.",
+      "exercTime": 15000,
+      "exercRefLink": "",
+      "exercImg": [
+        {
+          "exercImgName": "",
+          "exercImgRef": ""
+        }
+      ]
+    },
+    {
+      "audio": "right-over-left-crunches.mp3",
+      "exercName": "Right Over Left Crunches",
+      "exercDesc": "Put your Right foot over your Left and do crunches",
+      "exercTime": 20000,
+      "exercRefLink": "",
+      "exercImg": [
+        {
+          "exercImgName": "",
+          "exercImgRef": ""
+        }
+      ]
+    },
+    {
+      "audio": "right-over-left-lift-crunches.mp3",
+      "exercName": "Right Over Left Lift Crunches",
+      "exercDesc": "Put your Right foot over your Left and do crunches while lifting your legs.",
+      "exercTime": 15000,
+      "exercRefLink": "",
+      "exercImg": [
+        {
+          "exercImgName": "",
+          "exercImgRef": ""
+        }
+      ]
+    },
+    {
+      "audio": "left-over-right-crunches.mp3",
+      "exercName": "Left Over Right Crunches",
+      "exercDesc": "Put your left foot over your right and do crunches",
+      "exercTime": 20000,
+      "exercRefLink": "",
+      "exercImg": [
+        {
+          "exercImgName": "",
+          "exercImgRef": ""
+        }
+      ]
+    },
+    {
+      "audio": "left-over-right-lift-crunches.mp3",
+      "exercName": "Left Over Right Lift Crunches",
+      "exercDesc": "Put your left foot over your right and do crunches while lifting your legs.",
+      "exercTime": 15000,
+      "exercRefLink": "",
+      "exercImg": [
+        {
+          "exercImgName": "",
+          "exercImgRef": ""
+        }
+      ]
+    },
+    {
+      "audio": "right-over-left-crunches.mp3",
+      "exercName": "Right Over Left Crunches",
+      "exercDesc": "Put your Right foot over your Left and do crunches",
+      "exercTime": 20000,
+      "exercRefLink": "",
+      "exercImg": [
+        {
+          "exercImgName": "",
+          "exercImgRef": ""
+        }
+      ]
+    },
+    {
+      "audio": "right-over-left-lift-crunches.mp3",
+      "exercName": "Right Over Left Lift Crunches",
+      "exercDesc": "Put your Right foot over your Left and do crunches while lifting your legs.",
+      "exercTime": 15000,
+      "exercRefLink": "",
+      "exercImg": [
+        {
+          "exercImgName": "",
+          "exercImgRef": ""
+        }
+      ]
+    },
+    {
+      "audio": "bicycles.mp3",
+      "exercName": "Bicycles",
+      "exercDesc": "Lie on your back with fingertips behind ears, legs in the air, and knees pulled toward chest. Target your sides and entire ab area by contracting as you lift your shoulder blades off the ground. Straighten your right leg at a 45-degree angle and rotate your upper body to the left, bringing the right elbow toward the left knee. Switch sides by straightening your left leg, bending your right leg, and bringing the left elbow to the right knee. Alternate sides in a pedaling motion",
+      "exercTime": 40000,
+      "exercRefLink": "http://www.realsimple.com/health/fitness-exercise/workouts/stronger-abs-in-fifteen-minutes/bicycle-ab-exercise",
+      "exercImg": [
+        {
+          "exercImgName": "",
+          "exercImgRef": ""
+        }
+      ]
+    },
+    {
+      "audio": "one-minute-plank.mp3",
+      "exercName": "One Minute Plank",
+      "exercDesc": "The plank is one of the best exercises you can do for your core because it builds isometric strength to help sculpt your waistline and improve your posture. And depending on the type of plank you try, you can also engage your back, arms, shoulders, glutes, and hamstrings. Win!",
+      "exercTime": 60000,
+      "exercRefLink": "http://www.health.com/health/gallery/0,,20813896,00.html",
+      "exercImg": [
+        {
+          "exercImgName": "",
+          "exercImgRef": ""
+        }
+      ]
+    }
+  ],
+  "exerciseTimeInterval": 2000
 }

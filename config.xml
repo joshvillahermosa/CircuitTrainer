@@ -1,11 +1,9 @@
-<?xml version="0.6.0" encoding="UTF-8" standalone="yes"?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.circuittrainer880676" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>10 Minute Ab Workout</name>
   <description>
         A simple 10 minute ab workout
-    </description>
-  <author email="joshvillahermosa@gmail.com" href="http://joshvee.com/">
-      Circuit Training
+  </description>
   <author email="joshvillahermosa@joshvee.com" href="http://joshvee.com">
       Circuit Trainer
     </author>
