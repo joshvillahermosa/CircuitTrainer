@@ -15,6 +15,8 @@
               </span>-->
           </div>
 
+          <voice-player autoplay text="Welcome to the jungle! hahaha just kidding!"></voice-player>
+
           <div class="row">
             <button class="button button-info col col-50" ng-click="showExerDesc()">View Description</button>
             <button ng-show="!paused" class="button button-pause col col-50" ng-click="stop()">
@@ -31,7 +33,6 @@
           <div class="row">
             <button ng-show="canceled == true" class="button button-restart col col-100" ng-click="start()">Reset/Start</button>
           </div>
-          <!-- Add Reset button-->
       </div>
   </div>
   </ion-content>

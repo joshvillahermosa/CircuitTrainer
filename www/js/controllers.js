@@ -1,4 +1,4 @@
-angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit.directives', 'ionic']).controller('DashCtrl', function($scope, $log, $state, exerc) {
+angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit.directives', 'ionic', 'ngCordova']).controller('DashCtrl', function($scope, $log, $state, exerc) {
     var data = exerc.data;
     $log.info(data);
     $scope.exerc = exerc.data;
@@ -15,7 +15,7 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
         }
         return totalTime;
     }
-}).controller('CircuitCtrl', function($scope, $log, $interval, $state, $ionicPopup, exerc) {
+}).controller('CircuitCtrl', function($scope, $log, $interval, $timeout, $state, $ionicPopup, $cordovaNativeAudio, exerc) {
     $log.log(exerc.data);
     $scope.exc = exerc.data;
     var promise;
@@ -30,12 +30,13 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
     });
     //Will be worked on in the next release
     /*var workoutTimer = new ProgressBar.Circle('#workoutTimer', {
-                  color: "#59FF12",
-                  strokeWidth: 2.1,
-                  trailColor: "#FFF",
-                  easing: 'easeOut',
-                  text:{value: 'Next'}
-                });*/
+      color: "#59FF12",
+      strokeWidth: 2.1,
+      trailColor: "#FFF",
+      easing: 'easeOut',
+      text:{value: 'Next'}
+    });*/
+
     $log.log($scope.exc.exercise);
     var getTotalTime = function(exercise) {
         var totalTime = 0;
@@ -51,9 +52,40 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
         $log.log('First switch time: ' + switchTime);
         return switchTime;
     };
-    var announceWorkOut = function(message) {
-        var msg = new SpeechSynthesisUtterance(message);
-        window.speechSynthesis.speak(msg);
+
+    //This section will need to me modulized into a service
+    var setUpMedia = function() {
+        
+        $cordovaNativeAudio
+        .preloadSimple('begin', 'mp3s/begin.mp3')
+        .then(function (msg) {
+          $log.log('Audio loaded -Begin-, messaged: '+msg);
+        }, function (error) {
+          $log.error(error);
+        });
+
+        $cordovaNativeAudio
+        .preloadSimple('end', 'mp3s/completed.mp3')
+        .then(function (msg) {
+          $log.log('Audio loaded -Begin-, messaged: '+msg);
+        }, function (error) {
+          $log.error(error);
+        });
+
+        //Create the media to be played from the exercises array
+        var exercisesLength = $scope.exc.exercise.length;
+        $log.log('Total Exercises: '+exercisesLength);
+
+        for(var index = 0; index < exercisesLength; index++){
+            $log.log('Audio to be loaded -'+ $scope.exc.exercise[index].exercName );
+            $cordovaNativeAudio
+            .preloadSimple($scope.exc.exercise[index].exercName, 'exercises/'+$scope.exc.folderName+'/'+$scope.exc.audioFolder+'/'+$scope.exc.exercise[index].audio)
+            .then(function (msg) {
+              $log.log('Audio loaded -'+ $scope.exc.exercise[index].exercName +'-, messaged: '+msg);
+            }, function (error) {
+              $log.error(error);
+            });
+        }
     };
     $scope.start = function() {
         var completion = {
@@ -105,8 +137,8 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
             if (switchTime == totalTime) {
                 //Move to the next workout
                 exeIndex++;
-                //Announce workout
-                announceWorkOut(exercise.exercise[exeIndex].exercName);
+                //Announce workout 
+                $cordovaNativeAudio.play(exercise.exercise[exeIndex].exercName);
                 //Update the new switch
                 switchTime = totalTime - exercise.exercise[exeIndex].exercTime;
                 $scope.exerciseTime = exercise.exercise[exeIndex].exercTime + 1000;
@@ -116,7 +148,7 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
             //Stops
             if (totalTime < 0) {
                 //Announce finish
-                announceWorkOut(completion.header);
+                $cordovaNativeAudio.play('end');
                 mainTotalTimer.setText(completion.header);
                 $scope.finished = true;
                 $scope.stop();
@@ -151,11 +183,16 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
         var time = totalTime;
         $scope.paused = false;
         //Announce before interval start workout
-        announceWorkOut('Begin!');
-        announceWorkOut($scope.exc.exercise[exeIndex].exercName);
+        $cordovaNativeAudio.play('begin');
+
+        //Wait after playing begin
+        $timeout(function(){$cordovaNativeAudio.play(exercise.exercise[exeIndex].exercName);}, 1500);
+        
+        //announceWorkOut($scope.exc.exercise[exeIndex].exercName);
         promise = $interval(timer, 1000);
         $scope.canceled = false;
         $scope.finished = false;
     };
+    setUpMedia();
     $scope.start();
 });

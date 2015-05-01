@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "jquery": "~2.1.3",
-    "progressbar.js": "~0.8.1"
+    "progressbar.js": "~0.8.1",
+    "ngCordova": "*"
   }
 }

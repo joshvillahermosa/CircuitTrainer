@@ -72,6 +72,10 @@ ion-content{
   color: #FF0000;
 }
 
+#totalTimer > svg {
+  height: 50%;
+}
+
 /*Time information*/
 .time{
   color: #FFF;
