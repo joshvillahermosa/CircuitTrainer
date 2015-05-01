@@ -18,8 +18,9 @@ The purpose of this app is to provide a easy wasy to follow a ciruit workout. Th
 * ~~Add pop up for workout description~~
 * Add 10 and 5 second warnings - Next Release
 * ~~When the timer is done, hid the description button~~
-* Modularize media controller to a service
+* Modularize media controller to a service - Next Release
+* Hid Exit button when it has been presed
 
 ## Issues:
-* Scopes does not get destroyed when the render is changed - Next release
+* ~~Scopes does not get destroyed when the render is changed - Next release~~
 * Next time is not accurate - Next Release
