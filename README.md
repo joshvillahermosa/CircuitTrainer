@@ -3,7 +3,7 @@ Ciruit Trainer
 The purpose of this app is to provide a easy wasy to follow a ciruit workout. The goals of the project are:
 
 * Separate data and app so it can be easily modularized (1st Phase)
-* Built in timer (1st Phase)
+* ~~Built in timer (1st Phase)~~
 * Downloadbale content (2nd)
 
 ## Tasks
@@ -11,15 +11,19 @@ The purpose of this app is to provide a easy wasy to follow a ciruit workout. Th
 * ~~Show Time of total workout~~
 * ~~Show timer of sub total workout~~
 * ~~Add Main circle timer for main time~~
-* Add sub circle timer for the second one - Next release
+* (6) Add sub circle timer for the second one - Next release
 * ~~Add a pause button~~
 * ~~Add a continue button~~
-* Add a reset button when time is over
+* ~~Add a reset button when time is over~~~
 * ~~Add pop up for workout description~~
-* Add 10 and 5 second warnings - Next Release
+* (4) Add 10 and 5 second warnings - Next Release
 * ~~When the timer is done, hid the description button~~
 * Modularize media controller to a service - Next Release
-* Hid Exit button when it has been presed
+* Hide Exit button when it is pressed
+* (3) Optimize App by minifying application
+* (1) Create Linter in Gulp
+* (2) Create Minifier in Gulp
+* (5) Add timer color change when it reaches certain time
 
 ## Issues:
 * ~~Scopes does not get destroyed when the render is changed - Next release~~
