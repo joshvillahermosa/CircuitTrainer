@@ -5,14 +5,21 @@ var concat = require('gulp-concat');
 var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
+var jshint = require('gulp-jshint');
 var sh = require('shelljs');
 
-var paths = {
-  sass: ['./scss/**/*.scss']
-};
+//Require Config File
+var config = require('./gulp.config.js');
 
-gulp.task('default', ['sass']);
+gulp.task('default', function(){console.log('Nothing set to defualt')});
 
+//Watcher
+gulp.task('watch', function() {
+  //gulp.watch(paths.sass, ['sass']);
+  gulp.watch(config.jsFiles, ['lint']);
+});
+
+/* SASS compilation
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
     .pipe(sass())
@@ -25,16 +32,13 @@ gulp.task('sass', function(done) {
     .on('end', done);
 });
 
-gulp.task('watch', function() {
-  gulp.watch(paths.sass, ['sass']);
-});
-
 gulp.task('install', ['git-check'], function() {
   return bower.commands.install()
     .on('log', function(data) {
       gutil.log('bower', gutil.colors.cyan(data.id), data.message);
     });
 });
+*/
 
 gulp.task('git-check', function(done) {
   if (!sh.which('git')) {
@@ -47,4 +51,10 @@ gulp.task('git-check', function(done) {
     process.exit(1);
   }
   done();
+});
+
+gulp.task('lint', function(){
+  return gulp.src(config.jsFiles)
+    .pipe(jshint())
+    .pipe(jshint.reporter('jshint-stylish'));
 });
