@@ -30,12 +30,12 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
     });
     //Will be worked on in the next release
     /*var workoutTimer = new ProgressBar.Circle('#workoutTimer', {
-                  color: "#59FF12",
-                  strokeWidth: 2.1,
-                  trailColor: "#FFF",
-                  easing: 'easeOut',
-                  text:{value: 'Next'}
-                });*/
+      color: "#59FF12",
+      strokeWidth: 2.1,
+      trailColor: "#FFF",
+      easing: 'easeOut',
+      text:{value: 'Next'}
+    });*/
 
     $log.log($scope.exc.exercise);
     var getTotalTime = function(exercise) {
@@ -185,6 +185,7 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
         //Announce before interval start workout
         $cordovaNativeAudio.play('begin');
 
+        //Wait after playing begin
         $timeout(function(){$cordovaNativeAudio.play(exercise.exercise[exeIndex].exercName);}, 1500);
         
         //announceWorkOut($scope.exc.exercise[exeIndex].exercName);
