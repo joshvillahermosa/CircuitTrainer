@@ -24,6 +24,7 @@ The purpose of this app is to provide a easy wasy to follow a ciruit workout. Th
 3. Create Minifier in Gulp
 4. Create SASS Compiler in Gulp
 5. Optimize Angular App for minification
+6. Optimize by concasting files
 5. Optimize App by minifying application
 6. Add 10 and 5 second warnings - Next Release
 7. Add timer color change when it reaches certain time
