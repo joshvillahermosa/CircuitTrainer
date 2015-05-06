@@ -19,12 +19,11 @@ The purpose of this app is to provide a easy wasy to follow a ciruit workout. Th
 
 ## Second Release Tasks
 
-1. Create Linter in Gulp
+1. Create Linter in Gulp ([CSS](https://www.npmjs.com/package/gulp-scss-lint) & JS)
 2. Convert to SASS
-3. Create Minifier in Gulp
-4. Create SASS Compiler in Gulp
-5. Optimize Angular App for minification
-6. Optimize by concasting files
+4. Create  [SASS](https://www.npmjs.com/package/gulp-sass) Compiler in Gulp
+5. Create Minifier([JS](https://www.npmjs.com/package/gulp-uglify) & [CSS](https://www.npmjs.com/package/gulp-minify-css)) in Gulp 
+6. Optimize by [concatening](https://www.npmjs.com/package/gulp-concat) files 
 5. Optimize App by minifying application
 6. Add 10 and 5 second warnings - Next Release
 7. Add timer color change when it reaches certain time
