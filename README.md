@@ -20,7 +20,7 @@ The purpose of this app is to provide a easy wasy to follow a ciruit workout. Th
 ## Second Release Tasks
 
 1. Create Linter in Gulp ([CSS](https://www.npmjs.com/package/gulp-scss-lint) & JS)
-1. Change `$log.log` to `$log.debug` 
+1. ~~Change `$log.log` to `$log.debug`~~ 
 2. Convert to ~~SASS~~ LESS
 4. Create  [SASS](https://www.npmjs.com/package/gulp-sass) Compiler in Gulp
 5. Create Minifier([JS](https://www.npmjs.com/package/gulp-uglify) & [CSS](https://www.npmjs.com/package/gulp-minify-css)) in Gulp 
