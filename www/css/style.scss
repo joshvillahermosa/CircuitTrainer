@@ -1,4 +1,4 @@
-// Empty. Add your own CSS if you like 
+// Empty. Add your own SCSS if you like 
 
 //-----------------------------------------------------
 //Variables
@@ -11,7 +11,7 @@ $pause: #e8d101;
 $continue: #05e88f;
 $info: #4ab2ff;
 $restart: #21fa00;
-$cancel: #ff0000;
+$cancel: #ff0a0a;
 
 //-----------------------------------------------------
 //Style Elements
@@ -33,14 +33,14 @@ img {
 }
 
 //Card display
-.bar.bar-stable {
+.bar.bar-stable { 
   background-color: $bg-background-col;
   border-bottom: $bg-limeborder-col 1px solid;
   color: $bg-color-col;
-}
 
-.bar.bar-stable .title {
-  color: $bg-color-col; 
+  &.title {
+    color: $bg-color-col;  
+  }
 }
 
 ion-content {
@@ -50,10 +50,10 @@ ion-content {
 .item-body {
   background-color: $bg-background-col;
   color: $bg-color-col;
-}
 
-.item-body h1 {
-  color: $bg-color-col;
+  &h1 {
+    color: $bg-color-col;
+  }
 }
 
 //-----------------------------------------------------
@@ -90,20 +90,20 @@ ion-content {
   color: $bg-color-col;
 }
 
-#total-timer > svg {
-  height: 50%;
+.total-timer > svg {
   display: block;
+  height: 50%;
   width: 100%;
 }
 
-#workout-timer > svg {
+.workout-timer > svg {
   display: block;
   width: 100%;
 }
 
 .progressbar-text {
-  position: absolute;
+  font-size: 25px !important;
   margin: 0;
   padding: 0;
-  font-size: 25px !important;
+  position: absolute;
 }
