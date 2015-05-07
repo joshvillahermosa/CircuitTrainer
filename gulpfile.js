@@ -7,19 +7,43 @@ var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var jshint = require('gulp-jshint');
 var sh = require('shelljs');
+var argv = require('yargs').argv;
+var exec = require('child_process').exec;
 
 //Require Config File
 var config = require('./gulp.config.js');
 
 gulp.task('default', function(){console.log('Nothing set to defualt')});
 
-//Watcher
-gulp.task('watch', function() {
+/*----------------------------------------------------------------------
+Build andDebug
+-----------------------------------------------------------------------*/
+gulp.task('run-emulator', function() {
+  exec('ionic emulate android --livereload --consolelogs'); //Does not output logs
+});
+
+/*----------------------------------------------------------------------
+Watchers
+-----------------------------------------------------------------------*/
+gulp.task('dev',  function() {
   //gulp.watch(paths.sass, ['sass']);
   gulp.watch(config.jsFiles, ['lint']);
 });
 
-/* SASS compilation
+
+/*----------------------------------------------------------------------
+Compilers
+-----------------------------------------------------------------------*/
+/*
+gulp.task('install', ['git-check'], function() {
+  return bower.commands.install()
+    .on('log', function(data) {
+      gutil.log('bower', gutil.colors.cyan(data.id), data.message);
+    });
+});
+*/
+
+//SASS compilation
 gulp.task('sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
     .pipe(sass())
@@ -31,15 +55,9 @@ gulp.task('sass', function(done) {
     .pipe(gulp.dest('./www/css/'))
     .on('end', done);
 });
-
-gulp.task('install', ['git-check'], function() {
-  return bower.commands.install()
-    .on('log', function(data) {
-      gutil.log('bower', gutil.colors.cyan(data.id), data.message);
-    });
-});
-*/
-
+/*----------------------------------------------------------------------
+Linters
+-----------------------------------------------------------------------*/
 gulp.task('git-check', function(done) {
   if (!sh.which('git')) {
     console.log(
