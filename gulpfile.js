@@ -6,6 +6,7 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var jshint = require('gulp-jshint');
+var scsslint = require('gulp-scss-lint');
 var sh = require('shelljs');
 var argv = require('yargs').argv;
 var exec = require('child_process').exec;
@@ -27,7 +28,7 @@ Watchers
 -----------------------------------------------------------------------*/
 gulp.task('dev',  function() {
   //gulp.watch(paths.sass, ['sass']);
-  gulp.watch(config.jsFiles, ['lint']);
+  gulp.watch(config.jsFiles, ['js-lint']);
 });
 
 
@@ -71,8 +72,13 @@ gulp.task('git-check', function(done) {
   done();
 });
 
-gulp.task('lint', function(){
+gulp.task('js-lint', function(){
   return gulp.src(config.jsFiles)
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'));
+});
+
+gulp.task('scss-lint', function() {
+  gulp.src(config.scssFiles)
+    .pipe(scsslint());
 });
