@@ -3,9 +3,15 @@
 //-----------------------------------------------------
 //Variables
 //-----------------------------------------------------
-$bgBackgroundCol: #494949;
-$bgColorCol: #FFF;
-$bgLimeBorderCol: #59FF12;
+$bg-background-col: #494949;
+$bg-color-col: #fff;
+$bg-limeborder-col: #59ff12;
+$bg-gray-col: #161616;
+$pause: #e8d101;
+$continue: #05e88f;
+$info: #4ab2ff;
+$restart: #21fa00;
+$cancel: #ff0;
 
 //-----------------------------------------------------
 //Style Elements
@@ -14,98 +20,90 @@ $bgLimeBorderCol: #59FF12;
 //Center Helper
 .center {
   text-align: center;
-  margin: 0px 0px auto;
+  margin: 0 0 auto;
 }
+
 .link {
   display: block;
 }
+
 img {
   max-width: 100%;
   height: auto; 
 }
 
-/*Card display*/
-.bar.bar-stable{
-  background-color: $bgBackgroundCol;
-  color: $bgColorCol;
-  border-bottom: $bgLimeBorderCol 1px solid;
-}
-.bar.bar-stable .title {
-  color: #FFF; 
+//Card display
+.bar.bar-stable {
+  background-color: $bg-background-col;
+  color: $bg-color-col;
+  border-bottom: $bg-limeborder-col 1px solid;
 }
 
-ion-content{
-  background-color: #161616;
+.bar.bar-stable .title {
+  color: $bg-color-col; 
+}
+
+ion-content {
+  background-color: $bg-gray-col;
 }
 
 .item-body {
-  background-color: #494949;
-  color: #FFF;
+  background-color: $bg-background-col;
+  color: $bg-color-col;
 }
 
-.item-body h1{
-  color: #FFF;
+.item-body h1 {
+  color: $bg-color-col;
 }
 
-/*Button*/
-.button{
+//-----------------------------------------------------
+//Buttons
+//-----------------------------------------------------
+
+//General Button Mixin
+@mixin button-gen($color) {
+  border-color: $color;
+  background-color: transparent;
+  color: $color;
+  margin-left: 2px;
+  margin-right: -2px;
+}
+
+.button {
   margin-top: 5px;
 }
 
-.button-pause {
-  border-color: #E8D101;
-  background-color: transparent;
-  color: #E8D101;
-  margin-left: 2px;
-  margin-right: -2px;
-}
+.button-pause { @include button-gen($pause);}
 
-.button-continue {
-  border-color: #05E88F;
-  background-color: transparent;
-  color: #05E88F;
-  margin-left: 2px;
-  margin-right: -2px;
-}
-.button-info {
-  border-color: #4AB2FF;
-  background-color: transparent;
-  color: #4AB2FF;
-}
-.button-restart {
-  border-color: #21FA00;
-  background-color: transparent;
-  color: #21FA00;
-}
-.button-cancel {
-  border-color: #FF0000;
-  background-color: transparent;
-  color: #FF0000;
+.button-continue {@include button-gen($continue);}
+
+.button-info {@include button-gen($info);}
+
+.button-restart {@include button-gen($restart);}
+
+.button-cancel {@include button-gen($cancel);}
+
+//-----------------------------------------------------
+//Timer Styling
+//-----------------------------------------------------
+.time {
+  color: $bg-color-col;
 }
 
 #totalTimer > svg {
   height: 50%;
-}
-
-/*Time information*/
-.time{
-  color: #FFF;
-}
-
-#totalTimer > svg {
-    display: block;
-    width: 100%;
+  display: block;
+  width: 100%;
 }
 
 #workoutTimer > svg {
-    display: block;
-    width: 100%;
+  display: block;
+  width: 100%;
 }
 
 .progressbar-text {
   position: absolute;
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   font-size: 25px !important;
 }
-
