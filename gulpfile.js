@@ -27,7 +27,9 @@ gulp.task('run-emulator', function() {
 Watchers
 -----------------------------------------------------------------------*/
 gulp.task('dev',  function() {
-  //gulp.watch(paths.sass, ['sass']);
+  //gulp.watch(config.jsFiles, ['js-lint']);
+  gulp.watch(config.scssFiles, ['sass-lint']);
+  gulp.watch(config.scssFiles, ['sass']);
   gulp.watch(config.jsFiles, ['js-lint']);
 });
 
@@ -45,17 +47,13 @@ gulp.task('install', ['git-check'], function() {
 */
 
 //SASS compilation
-gulp.task('sass', function(done) {
-  gulp.src('./scss/ionic.app.scss')
-    .pipe(sass())
-    .pipe(gulp.dest('./www/css/'))
-    .pipe(minifyCss({
-      keepSpecialComments: 0
-    }))
-    .pipe(rename({ extname: '.min.css' }))
-    .pipe(gulp.dest('./www/css/'))
-    .on('end', done);
+
+gulp.task('sass', function () {
+  gulp.src(config.scssFiles)
+    .pipe(sass().on('error', function(err){console.log(err)}))
+    .pipe(gulp.dest(config.scssOutPurDir));
 });
+
 /*----------------------------------------------------------------------
 Linters
 -----------------------------------------------------------------------*/
@@ -78,7 +76,7 @@ gulp.task('js-lint', function(){
     .pipe(jshint.reporter('jshint-stylish'));
 });
 
-gulp.task('scss-lint', function() {
+gulp.task('sass-lint', function() {
   gulp.src(config.scssFiles)
     .pipe(scsslint());
 });
