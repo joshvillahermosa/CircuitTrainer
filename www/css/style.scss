@@ -1,9 +1,20 @@
-/* Empty. Add your own CSS if you like */
+// Empty. Add your own CSS if you like 
 
-/*Center Helper*/
+//-----------------------------------------------------
+//Variables
+//-----------------------------------------------------
+$bgBackgroundCol: #494949;
+$bgColorCol: #FFF;
+$bgLimeBorderCol: #59FF12;
+
+//-----------------------------------------------------
+//Style Elements
+//-----------------------------------------------------
+
+//Center Helper
 .center {
   text-align: center;
-  margin: 0px 0px auto; 
+  margin: 0px 0px auto;
 }
 .link {
   display: block;
@@ -15,9 +26,9 @@ img {
 
 /*Card display*/
 .bar.bar-stable{
-  background-color: #494949;
-  color: #FFF;
-  border-bottom: #59FF12 1px solid;
+  background-color: $bgBackgroundCol;
+  color: $bgColorCol;
+  border-bottom: $bgLimeBorderCol 1px solid;
 }
 .bar.bar-stable .title {
   color: #FFF; 
