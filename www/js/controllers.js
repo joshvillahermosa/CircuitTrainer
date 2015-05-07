@@ -23,7 +23,7 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
     $log.debug(exerc.data);
     $scope.exc = exerc.data;
     var promise;
-    var mainTotalTimer = new ProgressBar.Circle('#totalTimer', {
+    var mainTotalTimer = new ProgressBar.Circle('#total-timer', {
         color: "#59FF12",
         strokeWidth: 2.1,
         trailColor: "#FFF",

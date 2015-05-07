@@ -11,7 +11,7 @@ $pause: #e8d101;
 $continue: #05e88f;
 $info: #4ab2ff;
 $restart: #21fa00;
-$cancel: #ff0;
+$cancel: #ff0000;
 
 //-----------------------------------------------------
 //Style Elements
@@ -19,8 +19,8 @@ $cancel: #ff0;
 
 //Center Helper
 .center {
-  text-align: center;
   margin: 0 0 auto;
+  text-align: center;
 }
 
 .link {
@@ -28,15 +28,15 @@ $cancel: #ff0;
 }
 
 img {
-  max-width: 100%;
-  height: auto; 
+  height: auto;
+  max-width: 100%; 
 }
 
 //Card display
 .bar.bar-stable {
   background-color: $bg-background-col;
-  color: $bg-color-col;
   border-bottom: $bg-limeborder-col 1px solid;
+  color: $bg-color-col;
 }
 
 .bar.bar-stable .title {
@@ -90,13 +90,13 @@ ion-content {
   color: $bg-color-col;
 }
 
-#totalTimer > svg {
+#total-timer > svg {
   height: 50%;
   display: block;
   width: 100%;
 }
 
-#workoutTimer > svg {
+#workout-timer > svg {
   display: block;
   width: 100%;
 }
