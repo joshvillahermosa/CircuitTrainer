@@ -1,6 +1,10 @@
-angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit.directives', 'ionic', 'ngCordova']).controller('DashCtrl', function($scope, $log, $state, exerc) {
+angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit.directives', 'ionic', 'ngCordova'])
+.config(['$logProvider', function($logProvider){
+    //$logProvider.debugEnabled(false);
+}])
+.controller('DashCtrl', function($scope, $log, $state, exerc) {
     var data = exerc.data;
-    $log.info(data);
+    $log.debug(data);
     $scope.exerc = exerc.data;
     $scope.start = function() {
         $state.go('app.circuit');
@@ -16,7 +20,7 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
         return totalTime;
     }
 }).controller('CircuitCtrl', function($scope, $log, $interval, $timeout, $state, $ionicPopup, $cordovaNativeAudio, exerc) {
-    $log.log(exerc.data);
+    $log.debug(exerc.data);
     $scope.exc = exerc.data;
     var promise;
     var mainTotalTimer = new ProgressBar.Circle('#totalTimer', {
@@ -37,19 +41,19 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
       text:{value: 'Next'}
     });*/
 
-    $log.log($scope.exc.exercise);
+    $log.debug($scope.exc.exercise);
     var getTotalTime = function(exercise) {
         var totalTime = 0;
         var totalExe = exercise.exercise.length
         for (var time = 0; time < totalExe; time++) {
             totalTime += exercise.exercise[time].exercTime;
         }
-        $log.log('Total time in miliseconds: ' + totalTime);
+        $log.debug('Total time in miliseconds: ' + totalTime);
         return totalTime;
     };
     var getFirstSwitchTime = function(totalTime, exercise, exeIndex) {
         var switchTime = totalTime - exercise.exercise[exeIndex].exercTime;
-        $log.log('First switch time: ' + switchTime);
+        $log.debug('First switch time: ' + switchTime);
         return switchTime;
     };
 
@@ -59,7 +63,7 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
         $cordovaNativeAudio
         .preloadSimple('begin', 'mp3s/begin.mp3')
         .then(function (msg) {
-          $log.log('Audio loaded -Begin-, messaged: '+msg);
+          $log.debug('Audio loaded -Begin-, messaged: '+msg);
         }, function (error) {
           $log.error(error);
         });
@@ -67,21 +71,21 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
         $cordovaNativeAudio
         .preloadSimple('end', 'mp3s/completed.mp3')
         .then(function (msg) {
-          $log.log('Audio loaded -Begin-, messaged: '+msg);
+          $log.debug('Audio loaded -Begin-, messaged: '+msg);
         }, function (error) {
           $log.error(error);
         });
 
         //Create the media to be played from the exercises array
         var exercisesLength = $scope.exc.exercise.length;
-        $log.log('Total Exercises: '+exercisesLength);
+        $log.debug('Total Exercises: '+exercisesLength);
 
         for(var index = 0; index < exercisesLength; index++){
-            $log.log('Audio to be loaded -'+ $scope.exc.exercise[index].exercName );
+            $log.debug('Audio to be loaded -'+ $scope.exc.exercise[index].exercName );
             $cordovaNativeAudio
             .preloadSimple($scope.exc.exercise[index].exercName, 'exercises/'+$scope.exc.folderName+'/'+$scope.exc.audioFolder+'/'+$scope.exc.exercise[index].audio)
             .then(function (msg) {
-              $log.log('Audio loaded -'+ $scope.exc.exercise[index].exercName +'-, messaged: '+msg);
+              $log.debug('Audio loaded -'+ $scope.exc.exercise[index].exercName +'-, messaged: '+msg);
             }, function (error) {
               $log.error(error);
             });
@@ -93,8 +97,8 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
             desc: 'You have completed this circuit! <span class="ion-checkmark-round"></span>'
         };
         var timer = function() { /*totalTime, exeIndex, switchTime, exercise, totalExe*/
-            $log.log('Time to Switch in loop: ' + switchTime);
-            $log.log('Total Exer: ' + totalExe);
+            $log.debug('Time to Switch in loop: ' + switchTime);
+            $log.debug('Total Exer: ' + totalExe);
             //To show total time left of the work out
             $scope.totalTime = totalTime;
             //Set up curent scope for exercise
@@ -143,7 +147,7 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
                 switchTime = totalTime - exercise.exercise[exeIndex].exercTime;
                 $scope.exerciseTime = exercise.exercise[exeIndex].exercTime + 1000;
                 //Reupdate time with next workout
-                $log.log('Next exe: ' + exercise.exercise[exeIndex].exercName);
+                $log.debug('Next exe: ' + exercise.exercise[exeIndex].exercName);
             }
             //Stops
             if (totalTime < 0) {
