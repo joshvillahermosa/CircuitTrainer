@@ -27,6 +27,7 @@ The purpose of this app is to provide a easy wasy to follow a ciruit workout. Th
 1. ~~Change `$log.log` to `$log.debug`~~ 
 2. ~~Convert to SASS~~
 4. ~~Create  [SASS](https://www.npmjs.com/package/gulp-sass) Compiler in Gulp~~
+1. Convert Angular code to be minified
 5. Create Minifier([JS](https://www.npmjs.com/package/gulp-uglify) & [CSS](https://www.npmjs.com/package/gulp-minify-css)) in Gulp 
 6. Optimize by [concatening](https://www.npmjs.com/package/gulp-concat) files 
 5. Optimize App by minifying application
