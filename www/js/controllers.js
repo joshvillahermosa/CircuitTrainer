@@ -82,7 +82,7 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
 
         //Functions to be used in the loop
         var logErr = function(err) {
-            $log.error(error);
+            $log.error(err);
         };
 
         var logMsg = function(msg) {
