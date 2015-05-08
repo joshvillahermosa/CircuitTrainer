@@ -38,7 +38,7 @@ img {
   border-bottom: $bg-limeborder-col 1px solid;
   color: $bg-color-col;
 
-  &.title {
+  .title {
     color: $bg-color-col;  
   }
 }
@@ -92,18 +92,15 @@ ion-content {
 
 .total-timer > svg {
   display: block;
-  height: 50%;
+  height: 25%;
   width: 100%;
+}
+
+.progressbar-text {
+  font-size: 23px !important;
 }
 
 .workout-timer > svg {
   display: block;
   width: 100%;
-}
-
-.progressbar-text {
-  font-size: 25px !important;
-  margin: 0;
-  padding: 0;
-  position: absolute;
 }

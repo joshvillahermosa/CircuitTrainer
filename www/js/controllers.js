@@ -29,7 +29,7 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
         trailColor: "#FFF",
         easing: 'easeOut',
         text: {
-            value: 'Total Workout Time left'
+            value: 'Total Workout Time left',
         }
     });
     //Will be worked on in the next release
