@@ -18,7 +18,7 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
             totalTime += exerc.data.exercise[time].exercTime;
         }
         return totalTime;
-    }
+    };
 }).controller('CircuitCtrl', function($scope, $log, $interval, $timeout, $state, $ionicPopup, $cordovaNativeAudio, exerc) {
     $log.debug(exerc.data);
     $scope.exc = exerc.data;
@@ -44,7 +44,7 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
     $log.debug($scope.exc.exercise);
     var getTotalTime = function(exercise) {
         var totalTime = 0;
-        var totalExe = exercise.exercise.length
+        var totalExe = exercise.exercise.length;
         for (var time = 0; time < totalExe; time++) {
             totalTime += exercise.exercise[time].exercTime;
         }
@@ -80,15 +80,20 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
         var exercisesLength = $scope.exc.exercise.length;
         $log.debug('Total Exercises: '+exercisesLength);
 
+        //Functions to be used in the loop
+        var logErr = function(err) {
+            $log.error(error);
+        };
+
+        var logMsg = function(msg) {
+            $log.debug('Messaged: '+msg);
+        };
+
         for(var index = 0; index < exercisesLength; index++){
             $log.debug('Audio to be loaded -'+ $scope.exc.exercise[index].exercName );
             $cordovaNativeAudio
             .preloadSimple($scope.exc.exercise[index].exercName, 'exercises/'+$scope.exc.folderName+'/'+$scope.exc.audioFolder+'/'+$scope.exc.exercise[index].audio)
-            .then(function (msg) {
-              $log.debug('Audio loaded -'+ $scope.exc.exercise[index].exercName +'-, messaged: '+msg);
-            }, function (error) {
-              $log.error(error);
-            });
+            .then(logMsg, logErr);
         }
     };
     $scope.start = function() {
@@ -105,7 +110,7 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
             $scope.curExe = exercise.exercise[exeIndex];
             //Update circle timer
             mainTotalTimer.animate(totalTime / time, function() {
-                if (totalTime == 0) {
+                if (totalTime === 0) {
                     mainTotalTimer.setText('Circuit complete');
                 } else {
                     mainTotalTimer.setText($scope.curExe.exercName);
@@ -123,16 +128,16 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
                         subTitle: 'Authors source: <a href="http://joshvee.com" >Joshvee.com</a>'
                     });
                 } else {
-                    var popUp = $ionicPopup.alert({
+                    var popUpEnd = $ionicPopup.alert({
                         title: $scope.curExe.exercName,
                         template: $scope.curExe.exercDesc,
                         subTitle: 'Authors source: <a href="' + $scope.curExe.exercRefLink + '">' + $scope.curExe.exercRefLink + '</a>'
                     });
-                    popUp.then(function() {
+                    popUpEnd.then(function() {
                         $scope.continue ();
                     });
                 }
-            }
+            };
             //Update total time
             totalTime -= 1000;
             //Decrease time for update
@@ -174,7 +179,7 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
             var totalExe = $scope.exc.exercise.length;
             var time = totalTime;
             $scope.paused = true;
-            $scope.canceled = true
+            $scope.canceled = true;
             $scope.stop();
             $state.go('app.dash');
         };
