@@ -7,6 +7,8 @@ var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var jshint = require('gulp-jshint');
 var scsslint = require('gulp-scss-lint');
+var uglify = require('gulp-uglify');
+
 var sh = require('shelljs');
 var argv = require('yargs').argv;
 var exec = require('child_process').exec;
@@ -17,10 +19,19 @@ var config = require('./gulp.config.js');
 gulp.task('default', function(){console.log('Nothing set to defualt')});
 
 /*----------------------------------------------------------------------
-Build andDebug
+Build and Debug
 -----------------------------------------------------------------------*/
 gulp.task('run-emulator', function() {
   exec('ionic emulate android --livereload --consolelogs'); //Does not output logs
+});
+
+gulp.task('build', function(){
+  //Run JS Minifier -- Be put in JS Tmp
+  //Run CSS Minifier -- Put in CSS Tmp
+  //Concat JS Files -- Concat all files in JS Tmp
+  //Concat CS Files -- Concat all CSS tmp
+  //Disable Dev Mode -- Remove `<!-- Your App Js files-->` & `<!-- Your App CSS files-->` and files underneath
+  //Enable Prod Mode -- Attach concatanated files
 });
 
 /*----------------------------------------------------------------------
@@ -79,4 +90,15 @@ gulp.task('js-lint', function(){
 gulp.task('sass-lint', function() {
   gulp.src(config.scssFiles)
     .pipe(scsslint());
+});
+
+
+/*----------------------------------------------------------------------
+Compressors
+-----------------------------------------------------------------------*/
+
+gulp.task('js-compress', function() {
+  return gulp.src(config.jsFiles)
+    .pipe(uglify())
+    .pipe(gulp.dest(config.jsFilesTempOut));
 });
