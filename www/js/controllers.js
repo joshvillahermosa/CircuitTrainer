@@ -1,15 +1,19 @@
-angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit.directives', 'ionic', 'ngCordova'])
-.config(['$logProvider', function($logProvider){
-    //$logProvider.debugEnabled(false);
-}])
-.controller('DashCtrl', function($scope, $log, $state, exerc) {
+var circuitControllers = angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit.directives', 'ionic', 'ngCordova']);
+
+circuitControllers.config(['$logProvider', function($logProvider){
+    $logProvider.debugEnabled(true);
+}]);
+
+circuitControllers.controller('DashCtrl', ['$scope', '$log', '$state', 'exerc', function($scope, $log, $state, exerc) {
     var data = exerc.data;
     $log.debug(data);
     $scope.exerc = exerc.data;
     $scope.start = function() {
         $state.go('app.circuit');
     };
-}).controller('ExercCtrl', function($scope, $log, exerc) {
+}]);
+
+circuitControllers.controller('ExercCtrl', ['$scope', '$log', 'exerc', function($scope, $log, exerc) {
     $scope.exerc = exerc.data;
     $scope.totalTime = function() {
         var workouts = exerc.data.exercise;
@@ -19,7 +23,10 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
         }
         return totalTime;
     };
-}).controller('CircuitCtrl', function($scope, $log, $interval, $timeout, $state, $ionicPopup, $cordovaNativeAudio, exerc) {
+}]);
+
+circuitControllers.controller('CircuitCtrl', [ '$scope', '$log', '$interval', '$timeout', '$state', '$ionicPopup', '$cordovaNativeAudio', 'exerc', 
+function($scope, $log, $interval, $timeout, $state, $ionicPopup, $cordovaNativeAudio, exerc) {
     $log.debug(exerc.data);
     $scope.exc = exerc.data;
     var promise;
@@ -204,4 +211,4 @@ angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit
     };
     setUpMedia();
     $scope.start();
-});
+}]);
