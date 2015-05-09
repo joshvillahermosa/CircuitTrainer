@@ -5,9 +5,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('circuit', ['ionic', 'circuit.controllers', 'circuit.services', 'circuit.directives', 'ngCordova'])
+var circuit = angular.module('circuit', ['ionic', 'circuit.controllers', 'circuit.services', 'circuit.directives', 'ngCordova']);
 
-.run(function($ionicPlatform) {
+circuit.run(['$ionicPlatform', function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -19,9 +19,9 @@ angular.module('circuit', ['ionic', 'circuit.controllers', 'circuit.services', '
       StatusBar.styleLightContent();
     }
   });
-})
+}]);
 
-.config(function($stateProvider, $urlRouterProvider, $logProvider) {
+circuit.config(['$stateProvider', '$urlRouterProvider', '$logProvider', function($stateProvider, $urlRouterProvider, $logProvider) {
 
   //Comment out to disable logs
   $logProvider.debugEnabled(false);
@@ -89,4 +89,4 @@ angular.module('circuit', ['ionic', 'circuit.controllers', 'circuit.services', '
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/dash');
 
-});
+}]);
