@@ -1,4 +1,6 @@
-angular.module('circuit.directives', ['ionic', 'ui.router']).directive('circuit', ['$interval', '$log', '$ionicPopup', '$state', 
+var circuitDirectives = angular.module('circuit.directives', ['ionic', 'ui.router']);
+
+circuitDirectives.directive('circuit', ['$interval', '$log', '$ionicPopup', '$state', 
     function($interval, $log, $ionicPopup, $state) {
         return {
             restrict: 'E',
