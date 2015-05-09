@@ -8,7 +8,9 @@ var rename = require('gulp-rename');
 var jshint = require('gulp-jshint');
 var scsslint = require('gulp-scss-lint');
 var uglify = require('gulp-uglify');
+var concat = require('gulp-concat');
 
+var runSequence = require('run-sequence')
 var sh = require('shelljs');
 var argv = require('yargs').argv;
 var exec = require('child_process').exec;
@@ -34,6 +36,11 @@ gulp.task('build', function(){
   //Enable Prod Mode -- Attach concatanated files
 });
 
+gulp.task('js-build', function(){
+  runSequence('js-concat', 'js-compress');
+  console.log('Minified and concatenated');
+});
+
 /*----------------------------------------------------------------------
 Watchers
 -----------------------------------------------------------------------*/
@@ -41,7 +48,7 @@ gulp.task('dev',  function() {
   //gulp.watch(config.jsFiles, ['js-lint']);
   gulp.watch(config.scssFiles, ['sass-lint']);
   gulp.watch(config.scssFiles, ['sass']);
-  gulp.watch(config.jsFiles, ['js-lint']);
+  gulp.watch(config.jsFiles+'/*', ['js-lint']);
 });
 
 
@@ -82,7 +89,7 @@ gulp.task('git-check', function(done) {
 });
 
 gulp.task('js-lint', function(){
-  return gulp.src(config.jsFiles)
+  return gulp.src(config.jsFiles+'/*')
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'));
 });
@@ -98,7 +105,19 @@ Compressors
 -----------------------------------------------------------------------*/
 
 gulp.task('js-compress', function() {
-  return gulp.src(config.jsFiles)
+  console.log('Minifying JS Files');
+  return gulp.src(config.jsFilesOut+'/*')
     .pipe(uglify())
-    .pipe(gulp.dest(config.jsFilesTempOut));
+    .pipe(gulp.dest(config.jsFiles));
+});
+
+/*----------------------------------------------------------------------
+Concatenators
+-----------------------------------------------------------------------*/
+
+gulp.task('js-concat', function() {
+  console.log('Concatenating JS Files');
+  return gulp.src(config.jsFiles+'/*')
+    .pipe(concat('main.min.js'))
+    .pipe(gulp.dest(config.jsFilesOut));
 });
