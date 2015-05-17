@@ -48,7 +48,7 @@ gulp.task('dev',  function() {
   //gulp.watch(config.jsFiles, ['js-lint']);
   gulp.watch(config.scssFiles, ['sass-lint']);
   gulp.watch(config.scssFiles, ['sass']);
-  gulp.watch(config.jsFiles+'/*', ['js-lint']);
+  gulp.watch(config.jsFiles+'/*', ['js-hint']);
 });
 
 
@@ -88,7 +88,7 @@ gulp.task('git-check', function(done) {
   done();
 });
 
-gulp.task('js-lint', function(){
+gulp.task('js-hint', function(){
   return gulp.src(config.jsFiles+'/*')
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'));
@@ -107,7 +107,7 @@ Compressors
 gulp.task('js-compress', function() {
   console.log('Minifying JS Files');
   return gulp.src(config.jsFilesOut+'/*')
-    .pipe(uglify())
+    .pipe(uglify({sequences: false}))
     .pipe(gulp.dest(config.jsFiles));
 });
 
@@ -118,6 +118,6 @@ Concatenators
 gulp.task('js-concat', function() {
   console.log('Concatenating JS Files');
   return gulp.src(config.jsFiles+'/*')
-    .pipe(concat('main.min.js'))
+    .pipe(concat('main.min.js', {newLine: ';'}))
     .pipe(gulp.dest(config.jsFilesOut));
 });

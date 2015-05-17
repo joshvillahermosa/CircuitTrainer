@@ -6,7 +6,6 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 var circuit = angular.module('circuit', ['ionic', 'circuit.controllers', 'circuit.services', 'circuit.directives', 'ngCordova']);
-
 circuit.run(['$ionicPlatform', function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -20,7 +19,6 @@ circuit.run(['$ionicPlatform', function($ionicPlatform) {
     }
   });
 }]);
-
 circuit.config(['$stateProvider', '$urlRouterProvider', '$logProvider', function($stateProvider, $urlRouterProvider, $logProvider) {
 
   //Comment out to disable logs
@@ -88,5 +86,4 @@ circuit.config(['$stateProvider', '$urlRouterProvider', '$logProvider', function
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/dash');
-
 }]);
