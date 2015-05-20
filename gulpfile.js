@@ -9,6 +9,7 @@ var jshint = require('gulp-jshint');
 var scsslint = require('gulp-scss-lint');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
+var ngAnnotate = require('gulp-ng-annotate');
 
 var runSequence = require('run-sequence')
 var sh = require('shelljs');
@@ -99,6 +100,11 @@ gulp.task('sass-lint', function() {
     .pipe(scsslint());
 });
 
+gulp.task('ng-min', function(){
+  return gulp.src(config.jsFiles+'*')
+    .pipe(ngAnnotate())
+    .pipe(gulp.dest(config.jsFiles));
+});
 
 /*----------------------------------------------------------------------
 Compressors

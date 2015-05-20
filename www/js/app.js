@@ -42,9 +42,9 @@ circuit.config(['$stateProvider', '$urlRouterProvider', '$logProvider', function
   .state('app.dash', {
     url: '/dash',
     resolve: {
-      exerc: function(ExerciseGen){
+      exerc: ["ExerciseGen", function(ExerciseGen){
         return ExerciseGen.getExerc('10AbbWorkout');
-      }
+      }]
     },
     views: {
       'app-dash': {
@@ -57,9 +57,9 @@ circuit.config(['$stateProvider', '$urlRouterProvider', '$logProvider', function
   .state('app.info', {
     url: '/exercinfo',
     resolve: {
-      exerc: function(ExerciseGen){
+      exerc: ["ExerciseGen", function(ExerciseGen){
         return ExerciseGen.getExerc('10AbbWorkout');
-      }
+      }]
     },
     views: {
       'app-info': {
@@ -72,9 +72,9 @@ circuit.config(['$stateProvider', '$urlRouterProvider', '$logProvider', function
   .state('app.circuit', {
     url: '/circuit',
     resolve: {
-      exerc: function(ExerciseGen){
+      exerc: ["ExerciseGen", function(ExerciseGen){
         return ExerciseGen.getExerc('10AbbWorkout');
-      }
+      }]
     },
     views: {
       'app-circuit': {

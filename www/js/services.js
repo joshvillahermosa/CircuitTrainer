@@ -1,12 +1,12 @@
 var circuitServices = angular.module('circuit.services', []);
 
-circuitServices.factory('ExerciseGen', function($http) {
+circuitServices.factory('ExerciseGen', ["$http", function($http) {
   return {
     getExerc: function(exercise) {
       return $http.get('exercises/'+exercise+'/index.json');
     }
   };
-});
+}]);
 
 /*
 .service('timerStartCheck', function(){
