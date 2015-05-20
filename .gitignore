@@ -9,3 +9,5 @@ CircuitTrainer.sublime-workspace
 www/lib/*
 www/exercises/*
 www/css/style.css
+www/js/main.min.js
+www/js/temp/
