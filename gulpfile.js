@@ -117,8 +117,15 @@ gulp.task('js-compress', function() {
     .pipe(gulp.dest(config.jsFiles));
 });
 
+gulp.task('css-compress', function(){
+  console.log('Minifying CSS');
+  return gulp.src(config.scssOutPurDir+'/*.app.css')
+    .pipe(minifyCss({compatibility: 'ie9'}))
+    .pipe(gulp.dest(config.scssOutPurDir));
+});
+
 /*----------------------------------------------------------------------
-Concatenators
+Concatenators & HTML Injectio
 -----------------------------------------------------------------------*/
 
 gulp.task('js-concat', function() {
