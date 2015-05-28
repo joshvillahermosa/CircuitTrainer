@@ -39,7 +39,12 @@ gulp.task('build', function(){
 
 gulp.task('js-build', function(){
   runSequence('js-concat', 'js-compress');
-  console.log('Minified and concatenated');
+  console.log('Javascript Minified and concatenated');
+});
+
+gulp.task('css-build', function(){
+  runSequence('css-concat', 'css-compress');
+  console.log('CSS Minified and concatenated');
 });
 
 /*----------------------------------------------------------------------
@@ -119,7 +124,7 @@ gulp.task('js-compress', function() {
 
 gulp.task('css-compress', function(){
   console.log('Minifying CSS');
-  return gulp.src(config.scssOutPurDir+'/*.app.css')
+  return gulp.src(config.scssOutPurDir+'/*.min.css')
     .pipe(minifyCss({compatibility: 'ie9'}))
     .pipe(gulp.dest(config.scssOutPurDir));
 });
@@ -133,4 +138,11 @@ gulp.task('js-concat', function() {
   return gulp.src(config.jsFiles+'/*')
     .pipe(concat('main.min.js', {newLine: ';'}))
     .pipe(gulp.dest(config.jsFilesOut));
+});
+
+gulp.task('css-concat', function() {
+  console.log('Concatenating CSS Files');
+  return gulp.src(config.scssOutPurDir+'/*.style.css')
+    .pipe(concat('main.min.css'))
+    .pipe(gulp.dest(config.scssOutPurDir));
 });
