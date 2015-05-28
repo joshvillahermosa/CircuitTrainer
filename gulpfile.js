@@ -33,6 +33,7 @@ gulp.task('build', function(){
   //Run CSS Minifier -- Put in CSS Tmp
   //Concat JS Files -- Concat all files in JS Tmp
   //Concat CS Files -- Concat all CSS tmp
+  runSequence('js-build', 'css-build');
   //Disable Dev Mode -- Remove `<!-- Your App Js files-->` & `<!-- Your App CSS files-->` and files underneath
   //Enable Prod Mode -- Attach concatanated files
 });
