@@ -22,7 +22,7 @@ circuit.run(['$ionicPlatform', function($ionicPlatform) {
 circuit.config(['$stateProvider', '$urlRouterProvider', '$logProvider', function($stateProvider, $urlRouterProvider, $logProvider) {
 
   //Comment out to disable logs
-  $logProvider.debugEnabled(false);
+  $logProvider.debugEnabled(true);
 
   // Ionic uses AngularUI Router which uses the concept of statess
   // Learn more here: https://github.com/angular-ui/ui-router

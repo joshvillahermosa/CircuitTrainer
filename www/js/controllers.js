@@ -1,9 +1,5 @@
 var circuitControllers = angular.module('circuit.controllers', ['circuit.services', 'ui.router', 'circuit.directives', 'ionic', 'ngCordova']);
 
-circuitControllers.config(['$logProvider', function($logProvider){
-    $logProvider.debugEnabled(true);
-}]);
-
 circuitControllers.controller('DashCtrl', ['$scope', '$log', '$state', 'exerc', function($scope, $log, $state, exerc) {
     var data = exerc.data;
     $log.debug(data);
@@ -104,6 +100,10 @@ function($scope, $log, $interval, $timeout, $state, $ionicPopup, $cordovaNativeA
         }
     };
     $scope.start = function() {
+        //Colors
+        var firstColor = "#59FF12";
+        var secondColor = "#00FF99";
+        var switchColor = false;
         var completion = {
             header: 'You Have finished your circuit!',
             desc: 'You have completed this circuit! <span class="ion-checkmark-round"></span>'
@@ -160,6 +160,9 @@ function($scope, $log, $interval, $timeout, $state, $ionicPopup, $cordovaNativeA
                 $scope.exerciseTime = exercise.exercise[exeIndex].exercTime + 1000;
                 //Reupdate time with next workout
                 $log.debug('Next exe: ' + exercise.exercise[exeIndex].exercName);
+                //Update colors when on switch
+                switchColor = !switchColor;
+                $log.debug('switchColor is: '+ switchColor);
             }
             //Stops
             if (totalTime < 0) {
